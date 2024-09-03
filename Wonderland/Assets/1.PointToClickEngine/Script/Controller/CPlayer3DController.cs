@@ -23,29 +23,48 @@ public class CPlayer3DController : MonoBehaviour
     [SerializeField]
     private Transform direction_Transform;
 
-
+    public float interactionDistance = 3f; // Distancia de interacción
+    public Color gizmoColor = Color.yellow; // Color del Gizmo
  
     [SerializeField]
     private Transform CameraTransform;
 
+    private Camera mainCamera;
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
         _verticalRotation = transform.localEulerAngles.y;
-        
+         mainCamera = Camera.main;
       
     }
 
     private void Update()
     {
         // Movement
+       // Movement
         float xHorizontal = Input.GetAxis("Horizontal");
         float zVertical = Input.GetAxis("Vertical");
 
         _moveDirection = direction_Transform.forward * zVertical; // Forward/Backward
         _moveDirection += direction_Transform.right * xHorizontal; // Left/Right
 
-       
+        // Interaction
+        if (Input.GetKeyDown(KeyCode.E)) // Cambia 'E' por la tecla que desees
+        {
+            RaycastHit hit;
+            // Usar la dirección de la cámara para el Raycast
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, interactionDistance))
+            {
+                // Buscar el componente Iinteract en el objeto golpeado
+                Iinteract interactable = hit.collider.GetComponent<Iinteract>();
+                if (interactable != null)
+                {
+                    interactable.Oninteract(); // Ejecutar Oninteract()
+                }
+            }
+        }
+
+
         if (_controller.isGrounded)
         {
              _velocity.x = _moveDirection.x * moveSpeed;
@@ -74,5 +93,12 @@ public class CPlayer3DController : MonoBehaviour
         _horizontalRotation = Mathf.Clamp(_horizontalRotation, -clampAngle, clampAngle);
 
        CameraTransform.transform.localEulerAngles = new Vector3(_horizontalRotation, _verticalRotation, 0f);
+    }
+
+ void OnDrawGizmos()
+    {
+        Gizmos.color = gizmoColor; // Establece el color del Gizmo
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * interactionDistance); // Línea hacia adelante
+        Gizmos.DrawSphere(transform.position + transform.forward * interactionDistance, 0.2f); // Esfera al final de la línea
     }
 }
