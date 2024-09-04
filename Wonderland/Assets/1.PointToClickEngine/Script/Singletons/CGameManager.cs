@@ -29,6 +29,8 @@ public class CGameManager : MonoBehaviour
    //private Transform originalCameraTransform; 
    private Vector3 originalCameraPosition; 
    private Quaternion originalCameraRotation;
+
+   private GameObject PlayerGameobject;
      [SerializeField] private Transform originalCameraTransform;
 
 
@@ -83,9 +85,8 @@ public class CGameManager : MonoBehaviour
     private void Start()
     // Métodos para inicializar y finalizar el juego
     {
-       // UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        //UnityEngine.Cursor.visible = false;
-
+      
+        PlayerGameobject = GameObject.FindGameObjectWithTag("Player");
      
     }
     public void InitializeGame()
@@ -115,13 +116,7 @@ public class CGameManager : MonoBehaviour
     public void Update()
     {
         // Actualizar física, renderizar gráficos, etc.
-      
-        //Al momento de volver da problemas
-        // if (Input.GetKeyDown(KeyCode.Q)) 
-        // {
-        //     LearpBackToOriginalPosition();
-        // }
-        LockCamera();
+       
     }
 
     public void RenderGame()
@@ -160,23 +155,7 @@ public class CGameManager : MonoBehaviour
         // Cambia las mecanicas de 2D a 3D O 3D a 2d
     }
     
-    private void LockCamera()
-    {
-        // if(IsTalking == true)
-        // {
-        //    Camera.main.transform.rotation = Quaternion.identity;   
-        // }
-        if(PuzzleMode == true || IsTalking == true)
-        {
-         
-        }
-        else
-        {
-            Camera.main.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None; 
-        }
-    }
-
-  public void StartDialogSystem()
+     public void StartDialogSystem()
   {
     IsTalking = true;
     
@@ -193,21 +172,19 @@ public class CGameManager : MonoBehaviour
     {
    
     float timeElapsed = 0f;
-    Transform startingPos = Camera.main.transform;
-    Quaternion startingRot = Camera.main.transform.rotation;
+    Transform startingPos = PlayerGameobject.transform;
+    //Quaternion startingRot = Camera.main.transform.rotation;
 
     while (timeElapsed < lerpDuration)
     {
         Camera.main.transform.position = Vector3.Lerp(startingPos.position, targetTransform.position, timeElapsed / lerpDuration);
-        Camera.main.transform.rotation = Quaternion.Lerp(startingRot, targetTransform.rotation, timeElapsed / lerpDuration);
+        Camera.main.transform.rotation = Quaternion.Lerp(startingPos.rotation, targetTransform.rotation, timeElapsed / lerpDuration);
 
         timeElapsed += Time.deltaTime;
         yield return null;
     }
-
-    Camera.main.transform.position = targetTransform.position;
-    Camera.main.transform.rotation = targetTransform.rotation;
     PuzzleMode = true; 
+    
 }
 
 
@@ -220,7 +197,7 @@ public class CGameManager : MonoBehaviour
     while (timeElapsed < lerpDuration)
     {
         Camera.main.transform.position = Vector3.Lerp(startingPos.position,  originalCameraPosition, timeElapsed / lerpDuration);
-        Camera.main.transform.rotation = Quaternion.Lerp(startingRot, originalCameraRotation, timeElapsed / lerpDuration);
+        Camera.main.transform.rotation = Quaternion.Lerp(startingRot , originalCameraRotation, timeElapsed / lerpDuration);
 
         timeElapsed += Time.deltaTime;
         yield return null;
@@ -228,6 +205,11 @@ public class CGameManager : MonoBehaviour
     PuzzleMode = false; 
 
     //Guardar la posición original si es la primera vez que se llama a LerpCamera
+    }
+
+    public bool GetPuzzleMode()
+    {
+        return PuzzleMode;
     }
 }
     

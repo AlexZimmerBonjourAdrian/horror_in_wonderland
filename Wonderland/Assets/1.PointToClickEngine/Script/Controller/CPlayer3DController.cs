@@ -40,16 +40,51 @@ public class CPlayer3DController : MonoBehaviour
 
     private void Update()
     {
-        // Movement
-       // Movement
-        float xHorizontal = Input.GetAxis("Horizontal");
-        float zVertical = Input.GetAxis("Vertical");
+        // Movimiento siempre activo
+    float xHorizontal = Input.GetAxis("Horizontal");
+    float zVertical = Input.GetAxis("Vertical");
 
-        _moveDirection = direction_Transform.forward * zVertical; // Forward/Backward
-        _moveDirection += direction_Transform.right * xHorizontal; // Left/Right
+    _moveDirection = direction_Transform.forward * zVertical; 
+    _moveDirection += direction_Transform.right * xHorizontal; 
 
-        // Interaction
-        if (Input.GetKeyDown(KeyCode.E)) // Cambia 'E' por la tecla que desees
+    if (_controller.isGrounded)
+    {
+        _velocity.y = 0f; // Reiniciar la velocidad vertical si está en el suelo
+        if (Input.GetButtonDown("Jump"))
+        {
+            _velocity.y = Mathf.Sqrt(jumpHeight * -2f * -gravity);   
+        }   
+    }
+
+    // Aplicar gravedad siempre
+    _velocity.y -= gravity * Time.deltaTime;
+
+    // Movimiento solo si no está en modo puzzle
+    if (CGameManager.Inst.GetPuzzleMode() == false)
+    {
+        _velocity.x = _moveDirection.x * moveSpeed;
+        _velocity.z = _moveDirection.z * moveSpeed;
+
+        // Mirar alrededor solo si no está en modo puzzle
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        _verticalRotation += mouseX;
+        _horizontalRotation -= mouseY;
+
+        _horizontalRotation = Mathf.Clamp(_horizontalRotation, -clampAngle, clampAngle);
+    }
+    else 
+    {
+        _velocity.x = 0f; // Detener movimiento horizontal en modo puzzle
+        _velocity.z = 0f; // Detener movimiento vertical en modo puzzle
+    }
+
+    _controller.Move(_velocity * Time.deltaTime);
+    CameraTransform.transform.localEulerAngles = new Vector3(_horizontalRotation, _verticalRotation, 0f);
+       
+
+       if (Input.GetKeyDown(KeyCode.E)) // Cambia 'E' por la tecla que desees
         {
             RaycastHit hit;
             // Usar la dirección de la cámara para el Raycast
@@ -63,36 +98,6 @@ public class CPlayer3DController : MonoBehaviour
                 }
             }
         }
-
-
-        if (_controller.isGrounded)
-        {
-             _velocity.x = _moveDirection.x * moveSpeed;
-             _velocity.z = _moveDirection.z * moveSpeed;
-             if (Input.GetButtonDown("Jump"))
-             {
-                _velocity.y = Mathf.Sqrt(jumpHeight * -2f * -gravity);   
-             }   
-        }  
-
-        if (!_controller.isGrounded)
-        {
-         _velocity.x = _moveDirection.x * moveSpeed;
-         _velocity.z = _moveDirection.z * moveSpeed;
-         _velocity.y -= gravity * Time.deltaTime;
-        }
-        _controller.Move(_velocity * Time.deltaTime);
-
-        // Looking around
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        _verticalRotation += mouseX;
-        _horizontalRotation -= mouseY;
-
-        _horizontalRotation = Mathf.Clamp(_horizontalRotation, -clampAngle, clampAngle);
-
-       CameraTransform.transform.localEulerAngles = new Vector3(_horizontalRotation, _verticalRotation, 0f);
     }
 
  void OnDrawGizmos()
