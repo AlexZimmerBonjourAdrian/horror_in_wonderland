@@ -112,7 +112,7 @@ public class C3DPointToClick : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Convertir la posición del ratón a un rayo 3D
+        // Convertir la posición del ratón a un rayo 3D 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // Dibujar el raycast en el Gizmo

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CGameManager : MonoBehaviour
 {
@@ -8,13 +10,44 @@ public class CGameManager : MonoBehaviour
     public CManagerSFX sfxManager;
 
     // Estado del juego
-    public int score;
-    public int currentLevel;
-    public int playerLives;
+    [SerializeField] private int score;
+    [SerializeField] private int currentLevel;
+    [SerializeField] private int playerLives;
 
-    public float progressPorcement;
+    [SerializeField] private float progressPorcement;
 
-    public bool isEndGame;
+    [SerializeField] private bool IsEndGame;
+
+    [SerializeField] private bool Is3D;
+
+    [SerializeField] private bool IsTalking;
+   
+    [SerializeField] private bool PuzzleMode = false;
+
+     [SerializeField] private float lerpDuration = 2f; // Duración de la transición
+    private Coroutine cameraLerpCoroutine; // Para controlar la corrutina
+   //private Transform originalCameraTransform; 
+   private Vector3 originalCameraPosition; 
+   private Quaternion originalCameraRotation;
+     [SerializeField] private Transform originalCameraTransform;
+
+
+    public void LearpCameraToPuzzle(Transform puzzleTransform)
+    {
+        
+        if(PuzzleMode == false)
+        {
+           
+        // Detener la corrutina si ya hay una en progreso
+            if (cameraLerpCoroutine != null )
+            {
+                StopCoroutine(cameraLerpCoroutine);
+            }
+            cameraLerpCoroutine = StartCoroutine(LerpCameraToPuzzle(puzzleTransform));
+        }
+        // Iniciar la corrutina de movimiento
+       
+    }
 
     //Singleton
      public static CGameManager Inst
@@ -46,7 +79,15 @@ public class CGameManager : MonoBehaviour
     }
 
 
+
+    private void Start()
     // Métodos para inicializar y finalizar el juego
+    {
+       // UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        //UnityEngine.Cursor.visible = false;
+
+     
+    }
     public void InitializeGame()
     {
         // Cargar niveles, configurar controles, etc.
@@ -71,9 +112,16 @@ public class CGameManager : MonoBehaviour
     }
 
     // Métodos para actualizar y renderizar el juego
-    public void UpdateGame()
+    public void Update()
     {
         // Actualizar física, renderizar gráficos, etc.
+      
+        //Al momento de volver da problemas
+        // if (Input.GetKeyDown(KeyCode.Q)) 
+        // {
+        //     LearpBackToOriginalPosition();
+        // }
+        LockCamera();
     }
 
     public void RenderGame()
@@ -104,6 +152,82 @@ public class CGameManager : MonoBehaviour
 
     public void DeleteInventarieItem()
     {
+         // Elimina un item del inventario
+    }
+    
+    public void SwitchMechanics2DTo3D(bool Genere)
+    {
+        // Cambia las mecanicas de 2D a 3D O 3D a 2d
+    }
+    
+    private void LockCamera()
+    {
+        // if(IsTalking == true)
+        // {
+        //    Camera.main.transform.rotation = Quaternion.identity;   
+        // }
+        if(PuzzleMode == true || IsTalking == true)
+        {
+         
+        }
+        else
+        {
+            Camera.main.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None; 
+        }
+    }
 
+  public void StartDialogSystem()
+  {
+    IsTalking = true;
+    
+  }
+  public void LearpBackToOriginalPosition()
+    {
+        if (cameraLerpCoroutine != null)
+        {
+            StopCoroutine(cameraLerpCoroutine);
+        }
+        cameraLerpCoroutine = StartCoroutine(LerpCameraToBackOrigianlPosition());
+    }
+    private IEnumerator LerpCameraToPuzzle(Transform targetTransform)
+    {
+   
+    float timeElapsed = 0f;
+    Transform startingPos = Camera.main.transform;
+    Quaternion startingRot = Camera.main.transform.rotation;
+
+    while (timeElapsed < lerpDuration)
+    {
+        Camera.main.transform.position = Vector3.Lerp(startingPos.position, targetTransform.position, timeElapsed / lerpDuration);
+        Camera.main.transform.rotation = Quaternion.Lerp(startingRot, targetTransform.rotation, timeElapsed / lerpDuration);
+
+        timeElapsed += Time.deltaTime;
+        yield return null;
+    }
+
+    Camera.main.transform.position = targetTransform.position;
+    Camera.main.transform.rotation = targetTransform.rotation;
+    PuzzleMode = true; 
+}
+
+
+  private IEnumerator LerpCameraToBackOrigianlPosition()
+    {
+    float timeElapsed = 0f;
+    Transform startingPos = Camera.main.transform;
+    Quaternion startingRot = Camera.main.transform.rotation;
+
+    while (timeElapsed < lerpDuration)
+    {
+        Camera.main.transform.position = Vector3.Lerp(startingPos.position,  originalCameraPosition, timeElapsed / lerpDuration);
+        Camera.main.transform.rotation = Quaternion.Lerp(startingRot, originalCameraRotation, timeElapsed / lerpDuration);
+
+        timeElapsed += Time.deltaTime;
+        yield return null;
+    }
+    PuzzleMode = false; 
+
+    //Guardar la posición original si es la primera vez que se llama a LerpCamera
     }
 }
+    

@@ -11,7 +11,7 @@ public class CCharacter : MonoBehaviour, Iinteract
    
     public  int id;
     
-    
+    public Transform puzzleCameraTarget; 
 
     [SerializeField]
     private string CharacterName;
@@ -21,22 +21,25 @@ public class CCharacter : MonoBehaviour, Iinteract
     {
         anim = GetComponent<Animator>(); 
         
+        
     }
 
     // Update is called once per frame
     public void Oninteract()
     {   
-        CManagerSFX.Inst.PlaySound(0);
+      CManagerSFX.Inst.PlaySound(0);
        // Debug.Log("Hola");
       //  ChangeAnimation();
-      
+      CGameManager.Inst.StartDialogSystem();
+      CGameManager.Inst.LearpCameraToPuzzle(puzzleCameraTarget);
       if(!CManagerDialogue.Inst.GetIsDialogueRunning())
       {
        // (Dictionary<string, float> floatVariables, Dictionary<string, string> stringVariables, Dictionary<string, bool> boolVariables) = CManagerDialogue.Inst.GetVariableStorage().GetAllVariables();
-
           CManagerDialogue.Inst.SetListYarn(id);
           CManagerDialogue.Inst.StartDialogueRunner();
       }
+
+       
     }
 
     public int GetIDCharacter()
