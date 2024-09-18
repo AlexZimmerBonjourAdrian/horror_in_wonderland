@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
@@ -28,18 +28,19 @@ public class CCharacter : MonoBehaviour, Iinteract
     public void Oninteract()
     {   
       CManagerSFX.Inst.PlaySound(0);
-       // Debug.Log("Hola");
-      //  ChangeAnimation();
-      CGameManager.Inst.StartDialogSystem();
-      CGameManager.Inst.LearpCameraToPuzzle(puzzleCameraTarget);
+      CCameraManager.Inst.GetCamera1().gameObject.SetActive(true);
+
       if(!CManagerDialogue.Inst.GetIsDialogueRunning())
       {
-       // (Dictionary<string, float> floatVariables, Dictionary<string, string> stringVariables, Dictionary<string, bool> boolVariables) = CManagerDialogue.Inst.GetVariableStorage().GetAllVariables();
           CManagerDialogue.Inst.SetListYarn(id);
           CManagerDialogue.Inst.StartDialogueRunner();
       }
+    }
 
-       
+    public void SetupCamera1(Transform target)
+    {
+        CCameraManager.Inst.camera1.transform.position = target.position;
+        CCameraManager.Inst.camera1.transform.rotation = target.rotation;
     }
 
     public int GetIDCharacter()

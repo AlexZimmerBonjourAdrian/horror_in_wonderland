@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,20 +22,9 @@ public class CCameraManager : MonoBehaviour
     }
     private static CCameraManager _inst;
 
-    public Camera CameraSegurityRoom;
-    public Camera camera_1A;
-    public Camera camera_1B;
-    public Camera camera_1C;
-    public Camera camera_2A;
-    public Camera camera_2B;
-    public Camera camera_3;
-    public Camera camera_3A;
-    public Camera camera_3B;
-    public Camera camera_4A;
-    public Camera camera_4B;
-    public Camera camera_5B;
-    public Camera camera_6;
-    public Camera camera_7;
+    public Camera mainCamera;
+    public Camera camera1;
+    public Camera camera2;
 
 public void Awake()
     {
@@ -48,4 +37,23 @@ public void Awake()
         _inst = this;
     }
  
+
+public Camera GetMainCamera()
+{
+    return mainCamera;
 }
+
+public Camera GetCamera1()
+{
+    return camera1;
+}
+
+public Camera GetCamera2()
+{
+    return camera2;
+}
+
+
+}
+
+

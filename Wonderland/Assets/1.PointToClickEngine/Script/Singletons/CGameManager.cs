@@ -211,5 +211,36 @@ public class CGameManager : MonoBehaviour
     {
         return PuzzleMode;
     }
+
+    public void ActivateCamera1(Transform target)
+    {
+        DeactivateAllCameras();
+        CCameraManager.Inst.camera1.gameObject.SetActive(true);
+        CCameraManager.Inst.camera1.transform.position = target.position;
+        CCameraManager.Inst.camera1.transform.rotation = target.rotation;
+        PuzzleMode = true;
+    }
+
+    public void ActivateCamera2(Transform target)
+    {
+        DeactivateAllCameras();
+        CCameraManager.Inst.camera2.gameObject.SetActive(true);
+        CCameraManager.Inst.camera2.transform.position = target.position;
+        CCameraManager.Inst.camera2.transform.rotation = target.rotation;
+        PuzzleMode = true;
+    }
+
+    public void ActivateMainCamera()
+    {
+        DeactivateAllCameras();
+        CCameraManager.Inst.mainCamera.gameObject.SetActive(true);
+        PuzzleMode = false;
+    }
+
+    private void DeactivateAllCameras()
+    {
+        CCameraManager.Inst.mainCamera.gameObject.SetActive(false);
+        CCameraManager.Inst.camera1.gameObject.SetActive(false);
+        CCameraManager.Inst.camera2.gameObject.SetActive(false);
+    }
 }
-    

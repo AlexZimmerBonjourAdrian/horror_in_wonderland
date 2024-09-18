@@ -98,6 +98,13 @@ public class CPlayer3DController : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            CCameraManager.Inst.GetMainCamera().gameObject.SetActive(true);
+            CCameraManager.Inst.GetCamera1().gameObject.SetActive(false);
+            CCameraManager.Inst.GetCamera2().gameObject.SetActive(false);
+        }
     }
 
  void OnDrawGizmos()

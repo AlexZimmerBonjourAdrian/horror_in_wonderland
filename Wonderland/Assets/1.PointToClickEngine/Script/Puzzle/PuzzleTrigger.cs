@@ -8,7 +8,8 @@ public class PuzzleTrigger : MonoBehaviour, Iinteract
     
     public void Oninteract()
     {
-       CGameManager.Inst.LearpCameraToPuzzle(puzzleCameraTarget);
+       CCameraManager.Inst.GetMainCamera().gameObject.SetActive(false);
+      CCameraManager.Inst.GetCamera2().gameObject.SetActive(true);
     }
    
             
