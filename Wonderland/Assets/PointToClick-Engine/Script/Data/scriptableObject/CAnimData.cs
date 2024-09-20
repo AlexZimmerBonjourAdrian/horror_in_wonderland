@@ -5,7 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAnimatioNData", menuName = "PointToClick/Animation")]
 [Serializable]
-public class CAnimData : MonoBehaviour
+public class CAnimData : ScriptableObject
 {
     private string Name;
     public string description;
