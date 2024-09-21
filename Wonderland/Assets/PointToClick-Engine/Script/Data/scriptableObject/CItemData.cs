@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "NewItemData",menuName ="PointToClick/Item")]
+[CreateAssetMenu(fileName = "NewItemData",menuName ="PointToClickEngine/Item")]
 [Serializable]
 public class CItemData : ScriptableObject
 {

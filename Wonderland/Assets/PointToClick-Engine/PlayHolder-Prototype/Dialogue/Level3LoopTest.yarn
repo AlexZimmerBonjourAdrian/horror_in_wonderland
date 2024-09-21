@@ -29,7 +29,7 @@ position: 956,-302
 title: Soy_Player
 tags: Loop
 colorID: 0
-position: 423,412
+position: 524,259
 ---
 Loop: El gusto es mio.
 Loop: Que amable.
@@ -97,7 +97,7 @@ Loop:Que grosero de tu parte.
 title: No_Tour
 tags: Loop Player
 colorID: 8
-position: 546,737
+position: 571,726
 ---
 Player:No gracias, estoy bien.
 Player:Le agradezco su cooperacion
@@ -109,7 +109,7 @@ Player:Le agradezco su cooperacion
 title: Yes_Tour
 tags: Loop Player
 colorID: 8
-position: 205,747
+position: 247,726
 ---
 Player:Gracias, seria de gran ayuda.
 <<set $IsYes_Tour to true>>

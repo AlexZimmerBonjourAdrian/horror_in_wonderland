@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Clase base para objetos de inventario como Scriptable Objects
-[CreateAssetMenu(fileName = "New Inventory Item", menuName = "Inventory/Item")]
+[CreateAssetMenu(fileName = "New Inventory Item", menuName = "PointToClickEngine/Inventory/Item")]
 public class CInventoryItemData : ScriptableObject, IInventoryItem
 {
     public string Name => itemName;

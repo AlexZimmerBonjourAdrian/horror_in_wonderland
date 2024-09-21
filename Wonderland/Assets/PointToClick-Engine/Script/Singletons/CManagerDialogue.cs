@@ -47,14 +47,9 @@ public class CManagerDialogue : MonoBehaviour
     }
    
     
-
-
     [SerializeField]
     private List<YarnProject> ListYarnProyect;
 
-    // [SerializeField]
-    // public Dictionary<YarnProject, string> DialogsDir = new Dictionary<YarnProject, string>();
-    
     [SerializeField]
     private YarnProject ActualYarn;
 
@@ -82,8 +77,5 @@ public class CManagerDialogue : MonoBehaviour
        return dialogueRunner.IsDialogueRunning;
    }
 
-    private void GetVariableStorage()
-    {
-        
-    }
+   
 }

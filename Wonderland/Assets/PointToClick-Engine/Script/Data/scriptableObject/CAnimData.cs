@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewAnimatioNData", menuName = "PointToClick/Animation")]
+[CreateAssetMenu(fileName = "NewAnimatioNData", menuName = "PointToClickEngine/Animation")]
 [Serializable]
 public class CAnimData : ScriptableObject
 {

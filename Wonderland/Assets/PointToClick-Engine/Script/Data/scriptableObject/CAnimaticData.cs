@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewAnimatioNData", menuName = "PointToClick/Animatic")]
+[CreateAssetMenu(fileName = "NewAnimatioNData", menuName = "PointToClickEngine/Animatic")]
 [Serializable]
 public class CAnimaticData : ScriptableObject
 {
-   private int _id;
+   public int _id;
   
 
-   private Sprite _Animatic;
+   public Sprite _Animatic;
 
-   private CAnimaticData _NextAnimatic;
+   public CAnimaticData _NextAnimatic;
   [SerializeField] private bool _hasPlayed;
     
     public bool HasPlayed 
