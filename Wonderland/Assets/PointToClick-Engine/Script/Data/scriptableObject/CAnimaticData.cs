@@ -14,12 +14,14 @@ public class CAnimaticData : ScriptableObject
 
    public CAnimaticData _NextAnimatic;
   [SerializeField] private bool _hasPlayed;
-    
+  [SerializeField] private bool _isReplay;
+
     public bool HasPlayed 
     { 
         get => _hasPlayed; 
         set => _hasPlayed = value; 
     }
+
 
 //     public void PlayAnimatic(CAnimaticData animaticData)
 // {

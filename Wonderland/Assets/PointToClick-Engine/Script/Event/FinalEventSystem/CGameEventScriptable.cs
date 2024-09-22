@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Event;
+using System;
+
+[CreateAssetMenu(fileName = "NewEventData", menuName = "PointToClickEngine/Event")]
+ [Serializable]
 public class CGameEventScriptable : ScriptableObject
 {
     private readonly List<CGameEventListener> _listeners = new List<CGameEventListener>();

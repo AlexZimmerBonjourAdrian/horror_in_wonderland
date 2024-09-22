@@ -8,7 +8,9 @@ public class CCharacter : MonoBehaviour, Iinteract
     private Animator anim;
     //private bool isActiveAnim = false;
 
-   
+    [SerializeField]private CGameEventScriptable OnPlayAnimatic;
+
+     [SerializeField]private CGameEventScriptable OnFlipCharacter;
     public  int id;
     
     public Transform puzzleCameraTarget; 
@@ -29,6 +31,11 @@ public class CCharacter : MonoBehaviour, Iinteract
     {   
       CManagerSFX.Inst.PlaySound(0);
 //      CCameraManager.Inst.GetCamera1().gameObject.SetActive(true);
+        if(OnPlayAnimatic!= null)
+         OnPlayAnimatic.Raize();
+
+          if(OnFlipCharacter!= null)
+         OnFlipCharacter.Raize();
 
       if(!CManagerDialogue.Inst.GetIsDialogueRunning())
       {

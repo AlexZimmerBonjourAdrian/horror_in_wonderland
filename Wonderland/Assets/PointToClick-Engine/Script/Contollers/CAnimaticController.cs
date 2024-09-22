@@ -30,15 +30,17 @@ public class CAnimaticController : MonoBehaviour
 
     void Update()
     {
+       
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            
             StartAnimatic();
             NextAnimatic();
         }
 
 
     }
-    private void StartAnimatic()
+    public void StartAnimatic()
     {
         if(ActualAnimatic == null)
         {   
