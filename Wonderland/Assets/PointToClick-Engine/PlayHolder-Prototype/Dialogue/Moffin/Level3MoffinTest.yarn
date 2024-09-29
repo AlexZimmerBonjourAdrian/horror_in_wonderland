@@ -4,7 +4,9 @@ colorID: 0
 position: 1442,-485
 ---
 <<if visited("Start_Moffin") is false>>
+<<EndTerror "conejita">>
 Moffin: Yo no confiaria en la conejita si fuera tu.
+
 
 -> Player: por que lo mencionas?
     <<jump por_que_lo_mencionas>>
@@ -20,7 +22,7 @@ moffin: Tienes miedo a morir, Quiza?
 <<endif>>
 ===
 title: por_que_lo_mencionas
-tags: Moffin
+tags: Moffin, conejita
 colorID: 0
 position: 1015,-57
 ---
@@ -71,7 +73,7 @@ Moffin:No estoy segura.
 title: Cincuenta_que_dolares
 tags: Moffin
 colorID: 0
-position: 824,209
+position: 1233,34
 ---
 Moffin:Dolares?, 
 Moffin:que?
@@ -102,7 +104,7 @@ position: 651,471
 title: No_tengo_terrones
 tags: Moffin
 colorID: 0
-position: 971,470
+position: 1247,189
 ---
 Moffin:En ese caso.
 Moffin:shu! shu!
@@ -112,7 +114,7 @@ Moffin:no hago tratos con pobres.
 title: No_creo_No_Pago
 tags: Moffin
 colorID: 0
-position: 1195,195
+position: 1247,358
 ---
 Player: Gracias, no te creo.
 Player: No voy a pagarte.
@@ -143,7 +145,7 @@ Moffin:No digas que no te lo adverti
 <<stop>> 
 ===
 title: Tomare_el_riesgo
-tags: moffin
+tags: Moffin
 colorID: 0
 position: 2072,192
 ---
@@ -152,4 +154,12 @@ Moffin:Bueno,
 Moffin:Me quedare con tus cosas cuando mueras
 Moffin:Solo aviso.
 <<stop>> 
+===
+title: conejita
+tags: Moffin, conejita
+colorID: 
+position: 1768,313
+---
+Moffin:Jaja estupido!!, ¿es un monstruo que esperabas?
+<<jump No_tengo_terrones>>
 ===

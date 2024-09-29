@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -42,13 +40,23 @@ public class CLevel3 : CLevelGeneric
           _inst = this;
     }
 
-    [YarnCommand("EndTerror")]
+   // [YarnCommand("EndTerror")]
     public static void EventEndTerror()
     {      
+        
         Door.SetRoom(4);
-       Door.SetThisLevelIsComplete(true);
+        Door.SetThisLevelIsComplete(true);
     }
 
+
+//Yarn Command with parameter functional
+//  [YarnCommand("TestEvent")]
+// public static void EventEndTerror(string terrorType) 
+// {      
+//     Debug.Log("Ending terror type: " + terrorType); // Example: prints the terror type
+//     Door.SetRoom(4);
+//     Door.SetThisLevelIsComplete(true);
+// }
   
     public void DesactiveCharacter(int id)
     {

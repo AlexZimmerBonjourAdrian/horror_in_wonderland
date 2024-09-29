@@ -12,7 +12,7 @@ using System;
 public class CAnimaticController : MonoBehaviour
 {   
     
-
+    
     [SerializeField]private List<CAnimaticData> animaticData_List;
 
     //Code to planning Manager Dialogs
@@ -21,19 +21,16 @@ public class CAnimaticController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
-
     void Update()
     {
        
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && CEngineManager.Inst_Engine.GetIsDebug())
         {
-            
             StartAnimatic();
             NextAnimatic();
         }

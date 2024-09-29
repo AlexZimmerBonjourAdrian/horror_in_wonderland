@@ -34,8 +34,8 @@ public class CLevel2 : CLevelGeneric
     [SerializeField]
     private List<int> CorrectSequence;
 
-    [SerializeField]
-    private EPuzzleType.Puzzle TypePuzzle = EPuzzleType.Puzzle.None;
+   // [SerializeField]
+   // private EPuzzleType.Puzzle TypePuzzle = EPuzzleType.Puzzle.None;
 
     
     [SerializeField]
@@ -82,7 +82,7 @@ public class CLevel2 : CLevelGeneric
      
         LevelRooms = GetComponentsInChildren<Room>().Select(room => room.gameObject).ToList();
        
-        TypePuzzle = EPuzzleType.Puzzle.Sequence;
+       // TypePuzzle = EPuzzleType.Puzzle.Sequence;
        
         _inst = this;
         

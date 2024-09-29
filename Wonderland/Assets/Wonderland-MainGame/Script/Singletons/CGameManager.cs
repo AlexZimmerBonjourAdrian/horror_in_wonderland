@@ -4,17 +4,16 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CGameManager : MonoBehaviour
+public class CGameManager : CEngineManager
 {
     // Referencias a otros managers
     public CManagerSFX sfxManager;
 
     // Estado del juego
-    [SerializeField] private int score;
-    [SerializeField] private int currentLevel;
-    [SerializeField] private int playerLives;
+   // [SerializeField] private int currentLevel;
+    //[SerializeField] private int playerLives;
 
-    [SerializeField] private float progressPorcement;
+ 
 
     [SerializeField] private bool IsEndGame;
 
@@ -206,35 +205,40 @@ public class CGameManager : MonoBehaviour
         return PuzzleMode;
     }
 
-    public void ActivateCamera1(Transform target)
-    {
-        DeactivateAllCameras();
-        CCameraManager.Inst.camera1.gameObject.SetActive(true);
-        CCameraManager.Inst.camera1.transform.position = target.position;
-        CCameraManager.Inst.camera1.transform.rotation = target.rotation;
-        PuzzleMode = true;
-    }
+       #region  DebugVariables
+   
+     
+    // public void ActivateCamera1(Transform target)
+    // {
+    //     DeactivateAllCameras();
+    //     CCameraManager.Inst.camera1.gameObject.SetActive(true);
+    //     CCameraManager.Inst.camera1.transform.position = target.position;
+    //     CCameraManager.Inst.camera1.transform.rotation = target.rotation;
+    //     PuzzleMode = true;
+    // }
 
-    public void ActivateCamera2(Transform target)
-    {
-        DeactivateAllCameras();
-        CCameraManager.Inst.camera2.gameObject.SetActive(true);
-        CCameraManager.Inst.camera2.transform.position = target.position;
-        CCameraManager.Inst.camera2.transform.rotation = target.rotation;
-        PuzzleMode = true;
-    }
+    // public void ActivateCamera2(Transform target)
+    // {
+    //     DeactivateAllCameras();
+    //     CCameraManager.Inst.camera2.gameObject.SetActive(true);
+    //     CCameraManager.Inst.camera2.transform.position = target.position;
+    //     CCameraManager.Inst.camera2.transform.rotation = target.rotation;
+    //     PuzzleMode = true;
+    // }
 
-    public void ActivateMainCamera()
-    {
-        DeactivateAllCameras();
-        CCameraManager.Inst.mainCamera.gameObject.SetActive(true);
-        PuzzleMode = false;
-    }
+    // public void ActivateMainCamera()
+    // {
+    //     DeactivateAllCameras();
+    //     CCameraManager.Inst.mainCamera.gameObject.SetActive(true);
+    //     PuzzleMode = false;
+    // }
 
-    private void DeactivateAllCameras()
-    {
-        CCameraManager.Inst.mainCamera.gameObject.SetActive(false);
-        CCameraManager.Inst.camera1.gameObject.SetActive(false);
-        CCameraManager.Inst.camera2.gameObject.SetActive(false);
-    }
+    // private void DeactivateAllCameras()
+    // {
+    //     CCameraManager.Inst.mainCamera.gameObject.SetActive(false);
+    //     CCameraManager.Inst.camera1.gameObject.SetActive(false);
+    //     CCameraManager.Inst.camera2.gameObject.SetActive(false);
+    // }
+    #endregion
+    
 }

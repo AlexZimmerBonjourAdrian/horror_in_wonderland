@@ -1,14 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Yarn;
-using Yarn.Compiler;
 using Yarn.Unity;
-using Yarn.Unity.Example;
-using UnityEngine.TextCore.Text;
-
 
 public class CManagerDialogue : MonoBehaviour
 {
@@ -17,6 +9,8 @@ public class CManagerDialogue : MonoBehaviour
    
     [SerializeField]
     private  InMemoryVariableStorage varibleStorage;
+
+    public CKeywordHandler keywordHandler;
     public static CManagerDialogue Inst
     {
         get
@@ -72,10 +66,42 @@ public class CManagerDialogue : MonoBehaviour
        dialogueRunner.StartDialogue(ActualYarn.NodeNames[0]);
    }
 
+    public void StartDialogueRunner(string Dialogue)
+   {
+       dialogueRunner.StartDialogue(Dialogue);
+   }
+
+    public void StopDialogueRunner()
+    {
+        dialogueRunner.Stop();
+    }
+  public bool FindNode(string nodeNameToFind)
+{
+    Debug.Log("FindNode " + nodeNameToFind);
+    foreach (string nodeName in ActualYarn.NodeNames) 
+    {
+      
+        if (nodeName == nodeNameToFind)
+        {
+            Debug.Log("Nodo encontrado: " + nodeNameToFind);
+            // ¡Nodo encontrado! Puedes hacer algo aquí, como iniciar el diálogo.
+            return true; 
+        }
+    }
+     Debug.Log("NO ENCUENTRA NODO: " + nodeNameToFind);
+    // Si llega aquí, el nodo no se encontró.
+    return false;
+}
+   
    public bool GetIsDialogueRunning()
    {
        return dialogueRunner.IsDialogueRunning;
    }
 
+    // [YarnCommand("show_dialogue")]
+    // public void ShowDialogue(string text)
+    // {
+    //     keywordHandler.UpdateDialogueText(text);
+    // }
    
 }
