@@ -1,7 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Yarn.Unity;
+using TMPro;
 
+
+[RequireComponent(typeof(CKeywordHandler))]
 public class CManagerDialogue : MonoBehaviour
 {
     [SerializeField]
@@ -11,6 +14,9 @@ public class CManagerDialogue : MonoBehaviour
     private  InMemoryVariableStorage varibleStorage;
 
     public CKeywordHandler keywordHandler;
+
+    [SerializeField] public TextMeshProUGUI dialogueText;
+
     public static CManagerDialogue Inst
     {
         get
@@ -38,8 +44,14 @@ public class CManagerDialogue : MonoBehaviour
 
         dialogueRunner = GameObject.FindAnyObjectByType<DialogueRunner>();
         varibleStorage = GameObject.FindAnyObjectByType<InMemoryVariableStorage>();
+        keywordHandler = GetComponent<CKeywordHandler>();
+
     }
    
+   private void Start()
+   {
+     //dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+   }
     
     [SerializeField]
     private List<YarnProject> ListYarnProyect;
@@ -103,5 +115,10 @@ public class CManagerDialogue : MonoBehaviour
     // {
     //     keywordHandler.UpdateDialogueText(text);
     // }
+
+    public  TextMeshProUGUI getText()
+    {
+        return dialogueText;
+    }
    
 }

@@ -3,9 +3,10 @@ tags: Moffin
 colorID: 0
 position: 1442,-485
 ---
+<<declare $characterName = "conejita">>
 <<if visited("Start_Moffin") is false>>
-<<EndTerror "conejita">>
-Moffin: Yo no confiaria en la conejita si fuera tu.
+<<keyword {$characterName}>>
+Moffin: Yo no confiaria en la {$characterName}, si fuera tu.
 
 
 -> Player: por que lo mencionas?
