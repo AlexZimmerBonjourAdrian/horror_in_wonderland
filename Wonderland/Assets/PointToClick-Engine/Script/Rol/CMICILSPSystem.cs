@@ -5,19 +5,7 @@ using UnityEngine;
 //Systema de rol template
 public class CMICILSPSystem : MonoBehaviour
 {
-    //Madness de 0 a 10
-    //Lucky de 0 a 10
-    //Perception de 0 a 10
-    //Charisma de 0 a 10
-    //Inteligence de 0 a 10
-    //Intimidate de 0 a 10
-    //Seduction de 0 a 10
-    //[M,I,C,I,L,S,P]
-
-      // Atributos del sistema
-   // Mejora: Usar un enum para los atributos del sistema
-
-
+    //SINGLETON
     private static CMICILSPSystem _instance;
     public static CMICILSPSystem Instance
     {
@@ -27,13 +15,13 @@ public class CMICILSPSystem : MonoBehaviour
             {
                 GameObject obj = new GameObject("CMICILSPSystem");
                 _instance = obj.AddComponent<CMICILSPSystem>();
-                DontDestroyOnLoad(obj); // Asegurar que persista entre escenas
+                DontDestroyOnLoad(obj); 
             }
             return _instance;
         }
     }
 
-     private void Awake()
+    private void Awake()
     {
         if (_instance != null && _instance != this)
         {
@@ -46,66 +34,53 @@ public class CMICILSPSystem : MonoBehaviour
 
     public enum Stats
     {
-        Madness,
-        Intelligence,
-        Charisma,
-        Intimidate,
-        Lucky,
-        Seduction,
-        Perception
+        Sanity,
+        Charm,
+        Wits,
+        Composure,
+        Empathy
     }
 
-    // Mejora: Usar un diccionario para almacenar los atributos
     private Dictionary<Stats, int> stats = new Dictionary<Stats, int>()
     {
-        { Stats.Madness, 0 },
-        { Stats.Intelligence, 0 },
-        { Stats.Charisma, 0 },
-        { Stats.Intimidate, 0 },
-        { Stats.Lucky, 0 },
-        { Stats.Seduction, 0 },
-        { Stats.Perception, 0 }
+        { Stats.Sanity, 5 },
+        { Stats.Charm, 5 },
+        { Stats.Wits, 5 },
+        { Stats.Composure, 5 },
+        { Stats.Empathy, 5 }
     };
 
     // Constructor para inicializar los atributos (opcional)
-    public CMICILSPSystem(int m = 0, int i = 0, int c = 0, int it = 0, int l = 0, int s = 0, int p = 0)
+    public void InitializeStats(int sa = 5, int ch = 5, int wi = 5, int wil = 5, int em = 5)
     {
-        SetStat(Stats.Madness, m);
-        SetStat(Stats.Intelligence, i);
-        SetStat(Stats.Charisma, c);
-        SetStat(Stats.Intimidate, it);
-        SetStat(Stats.Lucky, l);
-        SetStat(Stats.Seduction, s);
-        SetStat(Stats.Perception, p);
+        SetStat(Stats.Sanity, sa);
+        SetStat(Stats.Charm, ch);
+        SetStat(Stats.Wits, wi);
+        SetStat(Stats.Composure, wil);
+        SetStat(Stats.Empathy, em);
     }
 
-    // Método genérico para obtener el valor de un atributo
     public int GetStat(Stats stat)
     {
         return stats[stat];
     }
 
-    // Método genérico para establecer el valor de un atributo
     public void SetStat(Stats stat, int value)
     {
-        stats[stat] = Mathf.Clamp(value, 0, 10);
+        stats[stat] = Mathf.Clamp(value, 1, 10);
     }
 
-    // Método genérico para aumentar el valor de un atributo
     public void IncreaseStat(Stats stat, int amount)
     {
         SetStat(stat, stats[stat] + amount);
     }
 
-    // Método genérico para disminuir el valor de un atributo
     public void DecreaseStat(Stats stat, int amount)
     {
         SetStat(stat, stats[stat] - amount);
     }
 
-    
-
-  public class StatTemplate
+    public class StatTemplate
     {
         public string Name;
         public Dictionary<Stats, int> BaseStats;
@@ -117,41 +92,69 @@ public class CMICILSPSystem : MonoBehaviour
         }
     }
 
-
-//Neutral
-//preset predeterminada - Juno
-
-
-//Good
-//Detective professional 
-//ninia mimada - prioriza la suerte
-//Heroina de capa blanca 
-//lengua de plata
-
-//Bad
-//Femfatal
-//Monstruo Sin Croazon
-//Loca Perturbada
-//Hija de politico
-
-        public StatTemplate Detective = new StatTemplate("Detective", new Dictionary<Stats, int>() {
-        { Stats.Madness, 2 },
-        { Stats.Intelligence, 8 },
-        { Stats.Charisma, 5 },
-        { Stats.Intimidate, 7 },
-        { Stats.Lucky, 4 },
-        { Stats.Seduction, 3 },
-        { Stats.Perception, 9 }
+    // Plantillas de atributos
+    public StatTemplate Detective = new StatTemplate("Detective", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 7 },
+        { Stats.Charm, 5 },
+        { Stats.Wits, 8 },
+        { Stats.Composure, 6 },
+        { Stats.Empathy, 4 }
     });
 
-    public StatTemplate MonstruoConRostroDeAngel = new StatTemplate("Monstruo con rostro de ángel", new Dictionary<Stats, int>() {
-        { Stats.Madness, 9 },
-        { Stats.Intelligence, 3 },
-        { Stats.Charisma, 4 },
-        { Stats.Intimidate, 8 },
-        { Stats.Lucky, 2 },
-        { Stats.Seduction, 7 },
-        { Stats.Perception, 8 }
+    public StatTemplate NinaMimada = new StatTemplate("Niña Mimada", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 6 },
+        { Stats.Charm, 7 },
+        { Stats.Wits, 4 },
+        { Stats.Composure, 4 },
+        { Stats.Empathy, 6 }
+    });
+
+    public StatTemplate HeroinaDeCapaBlanca = new StatTemplate("Heroína de Capa Blanca", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 8 },
+        { Stats.Charm, 8 },
+        { Stats.Wits, 6 },
+        { Stats.Composure, 7 },
+        { Stats.Empathy, 8 }
+    });
+
+    public StatTemplate LenguaDePlata = new StatTemplate("Lengua de Plata", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 6 },
+        { Stats.Charm, 9 },
+        { Stats.Wits, 7 },
+        { Stats.Composure, 5 },
+        { Stats.Empathy, 6 }
+    });
+
+    public StatTemplate FemmeFatale = new StatTemplate("Femme Fatale", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 6 },
+        { Stats.Charm, 9 },
+        { Stats.Wits, 7 },
+        { Stats.Composure, 6 },
+        { Stats.Empathy, 5 }
+    });
+
+    public StatTemplate MonstruoSinCorazon = new StatTemplate("Monstruo Sin Corazón", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 2 },
+        { Stats.Charm, 3 },
+        { Stats.Wits, 6 },
+        { Stats.Composure, 8 },
+        { Stats.Empathy, 2 }
+    });
+
+    public StatTemplate LocaPerturbada = new StatTemplate("Loca Perturbada", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 1 },
+        { Stats.Charm, 4 },
+        { Stats.Wits, 7 },
+        { Stats.Composure, 3 },
+        { Stats.Empathy, 3 }
+    });
+
+    public StatTemplate HijaDePolitico = new StatTemplate("Hija de Político", new Dictionary<Stats, int>() {
+        { Stats.Sanity, 7 },
+        { Stats.Charm, 8 },
+        { Stats.Wits, 6 },
+        { Stats.Composure, 7 },
+        { Stats.Empathy, 4 }
     });
 
     public void ApplyTemplate(StatTemplate template)
@@ -161,8 +164,6 @@ public class CMICILSPSystem : MonoBehaviour
             SetStat(stat.Key, stat.Value);
         }
     }
-
 }
-
 
 

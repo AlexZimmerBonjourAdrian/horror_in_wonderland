@@ -1295,7 +1295,7 @@ PrefabInstance:
         type: 3}
       propertyPath: yarnProject
       value: 
-      objectReference: {fileID: 7545569452688597077, guid: 1ec92647df10739419eb3e71f064169d,
+      objectReference: {fileID: 7545569452688597077, guid: 714375f6afc9f4148be998e8c1bad303,
         type: 3}
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c,
         type: 3}
@@ -1887,7 +1887,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1498124745}
   ListYarnProyect:
   - {fileID: 7545569452688597077, guid: 3ce7b7915676ed641b2dbd949d573b39, type: 3}
-  - {fileID: 7545569452688597077, guid: 1ec92647df10739419eb3e71f064169d, type: 3}
+  - {fileID: 7545569452688597077, guid: 714375f6afc9f4148be998e8c1bad303, type: 3}
   ActualYarn: {fileID: 0}
 --- !u!114 &1432647191
 MonoBehaviour:
