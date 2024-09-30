@@ -40,7 +40,7 @@ public class CLevel3 : CLevelGeneric
           _inst = this;
     }
 
-   // [YarnCommand("EndTerror")]
+   [YarnCommand("EndTerror")]
     public static void EventEndTerror()
     {      
         
