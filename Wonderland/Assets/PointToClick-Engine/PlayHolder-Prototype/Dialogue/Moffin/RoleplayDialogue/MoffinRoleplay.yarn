@@ -3,5 +3,13 @@ tags:
 colorID: 0
 position: 668,269
 ---
-Empty text #line:0fa53e8 
+<<if visited("Start_Roleplay") is false>>   
+    Loop: Hola que tal? {GetStatByIndex(3,1)}
+    Loop: Soy Loop.
+
+//<<if  == 2>>
+-> Loop: Y tu eres?.
+    <<jump Loop_Respond>>
+//<<endif>>
+<<endif>>W
 ===

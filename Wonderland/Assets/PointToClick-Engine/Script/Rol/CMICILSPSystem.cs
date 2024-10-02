@@ -95,8 +95,9 @@ public class CMICILSPSystem : MonoBehaviour
         }
     }
 
-//[YarnFunction("GetStatByIndex")]
+
   // [YarnParameter("statIndex")] 
+ 
 public int GetStatByIndex(int statIndex)
 {
     // Asegurarse de que el índice esté dentro del rango válido
