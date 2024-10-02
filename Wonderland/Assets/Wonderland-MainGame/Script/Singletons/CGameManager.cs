@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CGameManager : CEngineManager
+public class CGameManager : MonoBehaviour
 {
     // Referencias a otros managers
     public CManagerSFX sfxManager;

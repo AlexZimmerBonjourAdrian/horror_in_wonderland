@@ -23,7 +23,7 @@ public class CAnimationController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && CEngineManager.Inst_Engine.GetIsDebug())
+        if (Input.GetKeyDown(KeyCode.E) && CEngineManager.Inst.GetIsDebug())
         {
             PlayAnimation(); 
         }
@@ -31,7 +31,7 @@ public class CAnimationController : MonoBehaviour
          public void PlayAnimation()
         {
 
-        if(CEngineManager.Inst_Engine.GetIsDebug())
+        if(CEngineManager.Inst.GetIsDebug())
         {
             if (animationFrames.Count > 0) 
                 
@@ -61,7 +61,7 @@ public class CAnimationController : MonoBehaviour
 
           public void SetFrame(int frameIndex)
         {
-            if(CEngineManager.Inst_Engine.GetIsDebug())
+            if(CEngineManager.Inst.GetIsDebug())
             {
                 if (frameIndex >= 0 && frameIndex < animationFrames.Count)
                 

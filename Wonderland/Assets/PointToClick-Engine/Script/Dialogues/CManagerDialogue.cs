@@ -4,7 +4,7 @@ using Yarn.Unity;
 using TMPro;
 
 
-[RequireComponent(typeof(CKeywordHandler))]
+[RequireComponent(typeof(CKeywordHandler),typeof(CRoleplayDialogue),typeof(CDiceRollDialogue))]
 public class CManagerDialogue : MonoBehaviour
 {
     [SerializeField]

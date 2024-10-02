@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 //Systema de rol template
 public class CMICILSPSystem : MonoBehaviour
 {
     //SINGLETON
     private static CMICILSPSystem _instance;
+
+    
     public static CMICILSPSystem Instance
     {
         get
@@ -20,6 +23,8 @@ public class CMICILSPSystem : MonoBehaviour
             return _instance;
         }
     }
+
+        public StatTemplate CurrentStatsTemplate { get; private set; } 
 
     private void Awake()
     {
@@ -41,7 +46,7 @@ public class CMICILSPSystem : MonoBehaviour
         Empathy
     }
 
-    private Dictionary<Stats, int> stats = new Dictionary<Stats, int>()
+     private Dictionary<Stats, int> currentStats = new Dictionary<Stats, int>()
     {
         { Stats.Sanity, 5 },
         { Stats.Charm, 5 },
@@ -49,6 +54,7 @@ public class CMICILSPSystem : MonoBehaviour
         { Stats.Composure, 5 },
         { Stats.Empathy, 5 }
     };
+
 
     // Constructor para inicializar los atributos (opcional)
     public void InitializeStats(int sa = 5, int ch = 5, int wi = 5, int wil = 5, int em = 5)
@@ -60,24 +66,75 @@ public class CMICILSPSystem : MonoBehaviour
         SetStat(Stats.Empathy, em);
     }
 
-    public int GetStat(Stats stat)
+    // [YarnParameter]
+    //   [YarnAction]
+    //     [YarnFunction]
+    //       [YarnNode]
+    //         [YarnStateInjector]
+    //           [YarnCommand]
+
+           
+   public int GetStat(Stats stat)
     {
-        return stats[stat];
+        return currentStats[stat];
     }
 
+    [YarnFunction("GetStatByName")]
+    public int GetStatByName([YarnParameter("statName")] string statName)
+    {
+        // Convertir el nombre de la estadística a su valor enum
+        if (System.Enum.TryParse<Stats>(statName, out Stats stat))
+        {
+            return currentStats[stat];
+        }
+        else
+        {
+            Debug.LogError("Stat no encontrada: " + statName);
+            return -1; // O cualquier otro valor que indique un error
+        }
+    }
+
+    [YarnFunction("GetStatByIndex")]
+public int GetStatByIndex([YarnParameter("statIndex")] int statIndex)
+{
+    // Asegurarse de que el índice esté dentro del rango válido
+    if (statIndex >= 0 && statIndex < System.Enum.GetValues(typeof(Stats)).Length)
+    {
+        return currentStats[(Stats)statIndex];
+    }
+    else
+    {
+        Debug.LogError("Índice de stat inválido: " + statIndex);
+        return -1; 
+    }
+}
+
+    public void PrintStats(StatTemplate template)
+    {
+        Debug.Log("============================");
+        Debug.Log("Stats for " + template.Name + ":");
+
+        foreach (var stat in template.BaseStats)
+        {
+            Debug.Log(stat.Key + ": " + stat.Value);
+        }
+
+
+    }
     public void SetStat(Stats stat, int value)
     {
-        stats[stat] = Mathf.Clamp(value, 1, 10);
+        currentStats[stat] = Mathf.Clamp(value, 1, 10);
     }
 
     public void IncreaseStat(Stats stat, int amount)
     {
-        SetStat(stat, stats[stat] + amount);
+       currentStats[stat] = currentStats[stat] + amount; 
+       
     }
 
     public void DecreaseStat(Stats stat, int amount)
     {
-        SetStat(stat, stats[stat] - amount);
+        SetStat(stat, currentStats[stat] - amount);
     }
 
     public class StatTemplate
@@ -157,13 +214,31 @@ public class CMICILSPSystem : MonoBehaviour
         { Stats.Empathy, 4 }
     });
 
+     // Update ApplyTemplate to set CurrentStatsTemplate and initialize currentStats:
     public void ApplyTemplate(StatTemplate template)
     {
+        CurrentStatsTemplate = template; // Store the active template
+
+        // Initialize currentStats based on the template
         foreach (var stat in template.BaseStats)
         {
-            SetStat(stat.Key, stat.Value);
+            currentStats[stat.Key] = stat.Value; 
         }
     }
+
+    public StatTemplate GetRandomTemplate()
+{
+    // Array with all your templates
+    StatTemplate[] templates = new StatTemplate[] { 
+        Detective, NinaMimada, HeroinaDeCapaBlanca, 
+        LenguaDePlata, FemmeFatale, MonstruoSinCorazon, 
+        LocaPerturbada, HijaDePolitico 
+    };
+
+    int randomIndex = Random.Range(0, templates.Length);
+    return templates[randomIndex];
+}
+    
 }
 
 

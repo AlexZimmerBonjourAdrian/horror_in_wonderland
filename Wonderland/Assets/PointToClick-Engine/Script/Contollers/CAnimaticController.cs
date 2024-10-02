@@ -29,7 +29,7 @@ public class CAnimaticController : MonoBehaviour
     void Update()
     {
        
-        if(Input.GetKeyDown(KeyCode.Space) && CEngineManager.Inst_Engine.GetIsDebug())
+        if(Input.GetKeyDown(KeyCode.Space) && CEngineManager.Inst.GetIsDebug())
         {
             StartAnimatic();
             NextAnimatic();

@@ -1,13 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CPlayer : MonoBehaviour
 {
 
+    
     public int level;
     public int health;
     public float[] position;
+    
+ void Start()
+    {    // Obtiene la instancia del sistema de Rol
+
+       
+    }
+
+void Update()
+{
+}
     
 public void SavePlayer()
 {
