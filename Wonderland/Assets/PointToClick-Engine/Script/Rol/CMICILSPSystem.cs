@@ -79,8 +79,9 @@ public class CMICILSPSystem : MonoBehaviour
         return currentStats[stat];
     }
 
-    [YarnFunction("GetStatByName")]
-    public int GetStatByName([YarnParameter("statName")] string statName)
+   // [YarnFunction("GetStatByName")]
+   //[YarnParameter("statName")] 
+    public int GetStatByName(string statName)
     {
         // Convertir el nombre de la estadística a su valor enum
         if (System.Enum.TryParse<Stats>(statName, out Stats stat))
@@ -94,8 +95,9 @@ public class CMICILSPSystem : MonoBehaviour
         }
     }
 
-    [YarnFunction("GetStatByIndex")]
-public int GetStatByIndex([YarnParameter("statIndex")] int statIndex)
+//[YarnFunction("GetStatByIndex")]
+  // [YarnParameter("statIndex")] 
+public int GetStatByIndex(int statIndex)
 {
     // Asegurarse de que el índice esté dentro del rango válido
     if (statIndex >= 0 && statIndex < System.Enum.GetValues(typeof(Stats)).Length)
