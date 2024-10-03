@@ -33,8 +33,8 @@ public class CLevelDialogue : CLevelGeneric
       }
 
       
-       //CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective); 
-        CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.LocaPerturbada); 
+       CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective); 
+        //CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.LocaPerturbada); 
        //CMICILSPSystem.Instance.PrintStats(CMICILSPSystem.Instance.CurrentStatsTemplate);
         CMICILSPSystem.Instance.PrintStats(CMICILSPSystem.Instance.CurrentStatsTemplate);
 
@@ -56,14 +56,14 @@ if(CEngineManager.Inst.GetIsDebug())
       if(Input.GetKeyDown(KeyCode.E))
       {
 
-         CMICILSPSystem.Instance.IncreaseStat(CMICILSPSystem.Stats.Sanity, 2);
+         CMICILSPSystem.Instance.IncreaseStat(CMICILSPSystem.Stats.Charm, 2);
       }
 
       
       if(Input.GetKeyDown(KeyCode.Q))
       {
 
-         CMICILSPSystem.Instance.DecreaseStat(CMICILSPSystem.Stats.Sanity, 2);
+         CMICILSPSystem.Instance.DecreaseStat(CMICILSPSystem.Stats.Charm, 2);
       }
 
       //set random arquetipe by pressed Button R
