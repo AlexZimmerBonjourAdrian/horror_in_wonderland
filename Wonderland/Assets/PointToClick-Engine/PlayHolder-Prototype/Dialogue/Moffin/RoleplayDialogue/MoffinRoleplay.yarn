@@ -19,8 +19,8 @@ position: 668,269
 <<if GetCurrentArchetypeName() == "Detective">>
 ->Player: Y tu eres?. <<if GetStatByIndex(2,1) is true>> 
     <<jump Roleplay_por_que_lo_mencionas>>
-// ->Player: por que me miras asi?. <<if GetStatByIndex(4,9) is true>>
-//     <<jump Roleplay_Por_que_deberia_confiar>>
+  ->Player: por que me miras asi?. <<if GetStatByIndex(2,9) is true>>
+     <<jump Roleplay_Sabes_algo>>
 ->Player: y si me das una prueba del servicio, si resulta ser bueno te pagare el doble.
     <<jump Roleplay_Por_que_deberia_confiar>>
 
@@ -46,6 +46,16 @@ Moffin:por suerte estaba aqui para advertirte, que buena persona soy.
 <<stop>>
 ===
 
+title: Roleplay_Sabes_algo
+tags: Moffin, conejita
+colorID: 0
+position: 1015,-57
+---
+Moffin:yo?, jaja no, o tal vez
+Moffin:si, se algo buscas a una niña, no? bien.
+Moffin:si me pagas te dire todo lo que quieras hasta cantare si quieres, señorita.
+<<stop>>
+===
 title: Roleplay_Por_que_deberia_confiar
 tags: Moffin
 colorID: 0
