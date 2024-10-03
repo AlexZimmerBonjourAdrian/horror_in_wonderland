@@ -11,7 +11,6 @@ public class CLevelDialogue : CLevelGeneric
    [SerializeField] private TextMeshProUGUI CharmText;
    [SerializeField] private TextMeshProUGUI WitsText;
    [SerializeField] private TextMeshProUGUI ComposureText;
-
    [SerializeField] private TextMeshProUGUI NameArquetipe;
 
    void Start()
@@ -35,6 +34,7 @@ public class CLevelDialogue : CLevelGeneric
 
       
        CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective); 
+       // CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.LocaPerturbada); 
        //CMICILSPSystem.Instance.PrintStats(CMICILSPSystem.Instance.CurrentStatsTemplate);
         CMICILSPSystem.Instance.PrintStats(CMICILSPSystem.Instance.CurrentStatsTemplate);
 

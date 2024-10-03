@@ -161,7 +161,7 @@ public int GetStatByIndex(int statIndex)
         { Stats.Empathy, 4 }
     });
 
-    public StatTemplate NinaMimada = new StatTemplate("Niña Mimada", new Dictionary<Stats, int>() {
+    public StatTemplate NinaMimada = new StatTemplate("NiñaMimada", new Dictionary<Stats, int>() {
         { Stats.Sanity, 6 },
         { Stats.Charm, 7 },
         { Stats.Wits, 4 },
@@ -169,7 +169,7 @@ public int GetStatByIndex(int statIndex)
         { Stats.Empathy, 6 }
     });
 
-    public StatTemplate HeroinaDeCapaBlanca = new StatTemplate("Heroína de Capa Blanca", new Dictionary<Stats, int>() {
+    public StatTemplate HeroinaDeCapaBlanca = new StatTemplate("HeroínadeCapa Blanca", new Dictionary<Stats, int>() {
         { Stats.Sanity, 8 },
         { Stats.Charm, 8 },
         { Stats.Wits, 6 },
@@ -177,7 +177,7 @@ public int GetStatByIndex(int statIndex)
         { Stats.Empathy, 8 }
     });
 
-    public StatTemplate LenguaDePlata = new StatTemplate("Lengua de Plata", new Dictionary<Stats, int>() {
+    public StatTemplate LenguaDePlata = new StatTemplate("LenguadePlata", new Dictionary<Stats, int>() {
         { Stats.Sanity, 6 },
         { Stats.Charm, 9 },
         { Stats.Wits, 7 },
@@ -185,7 +185,7 @@ public int GetStatByIndex(int statIndex)
         { Stats.Empathy, 6 }
     });
 
-    public StatTemplate FemmeFatale = new StatTemplate("Femme Fatale", new Dictionary<Stats, int>() {
+    public StatTemplate FemmeFatale = new StatTemplate("FemmeFatale", new Dictionary<Stats, int>() {
         { Stats.Sanity, 6 },
         { Stats.Charm, 9 },
         { Stats.Wits, 7 },
@@ -193,7 +193,7 @@ public int GetStatByIndex(int statIndex)
         { Stats.Empathy, 5 }
     });
 
-    public StatTemplate MonstruoSinCorazon = new StatTemplate("Monstruo Sin Corazón", new Dictionary<Stats, int>() {
+    public StatTemplate MonstruoSinCorazon = new StatTemplate("MonstruoSinCorazón", new Dictionary<Stats, int>() {
         { Stats.Sanity, 2 },
         { Stats.Charm, 3 },
         { Stats.Wits, 6 },
@@ -201,7 +201,7 @@ public int GetStatByIndex(int statIndex)
         { Stats.Empathy, 2 }
     });
 
-    public StatTemplate LocaPerturbada = new StatTemplate("Loca Perturbada", new Dictionary<Stats, int>() {
+    public StatTemplate LocaPerturbada = new StatTemplate("LocaPerturbada", new Dictionary<Stats, int>() {
         { Stats.Sanity, 1 },
         { Stats.Charm, 4 },
         { Stats.Wits, 7 },
@@ -209,7 +209,7 @@ public int GetStatByIndex(int statIndex)
         { Stats.Empathy, 3 }
     });
 
-    public StatTemplate HijaDePolitico = new StatTemplate("Hija de Político", new Dictionary<Stats, int>() {
+    public StatTemplate HijaDePolitico = new StatTemplate("HijadePolítico", new Dictionary<Stats, int>() {
         { Stats.Sanity, 7 },
         { Stats.Charm, 8 },
         { Stats.Wits, 6 },
