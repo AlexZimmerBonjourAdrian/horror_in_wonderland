@@ -33,8 +33,8 @@ public class CLevelDialogue : CLevelGeneric
       }
 
       
-       CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective); 
-       // CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.LocaPerturbada); 
+       //CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective); 
+        CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.LocaPerturbada); 
        //CMICILSPSystem.Instance.PrintStats(CMICILSPSystem.Instance.CurrentStatsTemplate);
         CMICILSPSystem.Instance.PrintStats(CMICILSPSystem.Instance.CurrentStatsTemplate);
 

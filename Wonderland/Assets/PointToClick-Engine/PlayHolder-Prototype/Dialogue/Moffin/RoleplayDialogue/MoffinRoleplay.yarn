@@ -19,8 +19,8 @@ position: 668,269
 <<if GetCurrentArchetypeName() == "Detective">>
 ->Player: Y tu eres?. <<if GetStatByIndex(2,1) is true>> 
     <<jump Roleplay_por_que_lo_mencionas>>
-->Player: por que me miras asi?. <<if GetStatByIndex(5,9) is true>>
-    <<jump Roleplay_Por_que_deberia_confiar>>
+// ->Player: por que me miras asi?. <<if GetStatByIndex(4,9) is true>>
+//     <<jump Roleplay_Por_que_deberia_confiar>>
 ->Player: y si me das una prueba del servicio, si resulta ser bueno te pagare el doble.
     <<jump Roleplay_Por_que_deberia_confiar>>
 
@@ -28,13 +28,11 @@ position: 668,269
 <<elseif GetCurrentArchetypeName() == "LocaPerturbada">>
 ->Player: Y tu pequeña abominacion quien eres?. 
     <<jump Roleplay_Me_Das_Miedo>>
-->Player: por que me miras asi?. 
+->Player: Tengo ganas de derramar la sangre de una inocente, ¿sabes donde podria encontrar a una?
     <<jump Roleplay_Que_demonios>>
-->Player: y si me das una prueba del servicio, si result
+->Player: tengo hambre y te ves deliciosa.
     <<jump Roleplay_Canibal>>
 <<endif>>
-
-
 ===
 
 title: Roleplay_por_que_lo_mencionas
