@@ -9,7 +9,7 @@ public class CMovementPlayer : MonoBehaviour, Iinteract
       public void Awake()
     {
         CPointToClick.Inst.CreatePoint();
-        CGameEvent.current.OnMove += FunctionMove;
+        //CGameEvent.current.OnMove += FunctionMove;
     }
   
    public void MoveLocation(int id)

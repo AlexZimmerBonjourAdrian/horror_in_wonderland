@@ -10,7 +10,7 @@ public class CEventChangeColor : MonoBehaviour
     {
         CPointToClick.Inst.CreatePoint();
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        CGameEvent.current.OnChangeColor += OnChangeColorNow;
+        //CGameEvent.current.OnChangeColor += OnChangeColorNow;
     }
     // Start is called before the first frame update
 

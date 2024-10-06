@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PointClickerEngine;
 
 [CreateAssetMenu(fileName = "New Revolver", menuName = "Inventory/Revolver")]
 public class CRevolver : CInventoryItemData

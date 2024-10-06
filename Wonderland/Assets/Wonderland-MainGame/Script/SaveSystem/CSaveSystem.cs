@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+
 
 [System.Serializable]
 public static class CSaveSystem 

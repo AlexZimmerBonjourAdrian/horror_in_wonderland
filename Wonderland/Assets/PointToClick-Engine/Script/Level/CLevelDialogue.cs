@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using PointClickerEngine;
 
 public class CLevelDialogue : CLevelGeneric
 {
@@ -13,7 +14,8 @@ public class CLevelDialogue : CLevelGeneric
    [SerializeField] private TextMeshProUGUI ComposureText;
    [SerializeField] private TextMeshProUGUI NameArquetipe;
 
-   void Start()
+
+   void Start()   
    {
     
     //Testing With Loop Dialogue, succesfull
@@ -25,7 +27,7 @@ public class CLevelDialogue : CLevelGeneric
     //   }
        //Testing With Loop Dialogue, funciona
 
-      if(!CManagerDialogue.Inst.GetIsDialogueRunning())
+      if(!CManagerDialogue.Inst.GetIsDialogueRunning() && CEngineManager.Inst.GetIsDebug()== true)
       {
         
           CManagerDialogue.Inst.SetListYarn(1);
@@ -51,8 +53,8 @@ public class CLevelDialogue : CLevelGeneric
 
    private void Update()
    {
-if(CEngineManager.Inst.GetIsDebug())
-{
+      if(CEngineManager.Inst.GetIsDebug())
+      {
       if(Input.GetKeyDown(KeyCode.E))
       {
 

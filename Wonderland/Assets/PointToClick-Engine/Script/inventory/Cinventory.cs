@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace PointClickerEngine
+{
 public class Cinventory : MonoBehaviour
 {
     // Singleton para acceder al inventario desde cualquier lugar
@@ -41,4 +42,5 @@ public class Cinventory : MonoBehaviour
             Debug.LogError("Índice de inventario inválido.");
         }
     }
+}
 }

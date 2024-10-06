@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace PointClickerEngine
+{
 public class CDebateDialogue : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+//Todo:Implementarion Next Update
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+}
 }

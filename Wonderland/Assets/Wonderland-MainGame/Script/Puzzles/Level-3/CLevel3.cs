@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Yarn.Unity;
-
+using PointClickerEngine;
 public class CLevel3 : CLevelGeneric
 {
 
@@ -42,8 +42,7 @@ public class CLevel3 : CLevelGeneric
 
    [YarnCommand("EndTerror")]
     public static void EventEndTerror()
-    {      
-        
+    {     
         Door.SetRoom(4);
         Door.SetThisLevelIsComplete(true);
     }

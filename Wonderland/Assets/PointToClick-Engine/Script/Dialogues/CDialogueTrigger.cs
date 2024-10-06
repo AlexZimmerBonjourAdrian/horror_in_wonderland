@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Event;
 
+namespace PointClickerEngine
+{
 public class CDialogueTrigger :  CGameEventListener
 {
     public string dialogueStartNode;
@@ -13,4 +15,5 @@ public class CDialogueTrigger :  CGameEventListener
     // {
     //     CGameManager.Inst.StartDialogue(dialogueStartNode, specificYarnProject);
     // }
+}
 }

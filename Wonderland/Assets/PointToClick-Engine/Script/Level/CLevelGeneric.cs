@@ -4,7 +4,6 @@ using UnityEngine;
 
 public  class CLevelGeneric : MonoBehaviour
 {
-
     protected virtual void CompleteRoom()
     {
         //Debug CompleteRoom

@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CInterrogativeDialogue : MonoBehaviour
+namespace PointClickerEngine
 {
-  
+    public class CInterrogativeDialogue : MonoBehaviour
+    {
+    
+    }
 }

@@ -8,6 +8,6 @@ public class CObjectColor : MonoBehaviour, Iinteract
     public void Oninteract()
     {
 
-        CGameEvent.current.TriggerChangeColor(id);
+        //CGameEvent.current.TriggerChangeColor(id);
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 //[SerializeField]
+namespace PointClickerEngine
+{
 public class CCharacter : MonoBehaviour, Iinteract
 {
     [SerializeField]
@@ -64,4 +66,5 @@ public class CCharacter : MonoBehaviour, Iinteract
     
 
 
+}
 }

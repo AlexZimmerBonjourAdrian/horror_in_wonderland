@@ -3,19 +3,19 @@ tags:
 colorID: 0
 position: 668,269
 ---
-   <<SaveDialogue "moffin: Hola que tal?">> moffin: Hola que tal? //{GetStatByIndex(3,1)}
- <<SaveDialogue "moffin: Soy moffin.">> moffin: Soy moffin.
+   <<SaveDialogueActual >> moffin: Hola que tal? //{GetStatByIndex(3,1)}
+ <<SaveDialogueActual >> moffin: Soy moffin.
 <<declare $Dec = "none">>
 <<if GetCurrentArchetypeName() == "Detective">>
 
 ->Player: Y tu eres?. <<if GetStatByIndex(2,1) is true>> 
-    <<SaveDialogue "Player: Y tu eres?.">>
+    <<SaveDialogueActual>>
     <<jump Roleplay_por_que_lo_mencionas>>
   ->Player: por que me miras asi?. <<if GetStatByIndex(2,9) is true>>
-    <<SaveDialogue "Player: por que me miras asi?.">>
+    <<SaveDialogueActual>>
      <<jump Roleplay_Sabes_algo>>
 ->Player: y si me das una prueba del servicio, si resulta ser bueno te pagare el doble.
-    <<SaveDialogue "Player: y si me das una prueba del servicio, si resulta ser bueno te pagare el doble.">>
+    <<SaveDialogueActual >>
     <<jump Roleplay_Por_que_deberia_confiar>>
 
 

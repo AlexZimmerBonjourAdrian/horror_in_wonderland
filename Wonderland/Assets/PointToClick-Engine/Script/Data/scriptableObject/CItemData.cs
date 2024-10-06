@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace PointClickerEngine
+{
 [CreateAssetMenu(fileName = "NewItemData",menuName ="PointToClickEngine/Item")]
 [Serializable]
 public class CItemData : ScriptableObject
@@ -19,4 +21,5 @@ public class CItemData : ScriptableObject
     private bool Optional;
 
 
+}
 }

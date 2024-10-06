@@ -1,59 +1,38 @@
-﻿using System.Collections;
+﻿using  System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class CGameEvent : MonoBehaviour
+public class CGameEvent<T> 
 {
+    private readonly List<Action<T>> listeners = new List<Action<T>>();
 
-    public static CGameEvent current
+    public void Subscribe(Action<T> listener)
     {
-        get
+        if (!listeners.Contains(listener))
+            listeners.Add(listener);
+    }
+
+    public void Unsubscribe(Action<T> listener)
+    {
+        listeners.Remove(listener);
+    }
+
+    public void Publish(T eventData)
+    {
+        for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            if (_inst == null)
+            try 
             {
-                GameObject obj = new GameObject("GameEvent");
-
-                return obj.AddComponent<CGameEvent>();
+                listeners[i]?.Invoke(eventData);
+            } 
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error in event listener: {ex.Message}");
+                // Handle the exception (e.g., log, disable the listener)
             }
-            return _inst;
         }
-    }
-    private static CGameEvent _inst;
-    // Start is called before the first frame update
-
-    private void Awake()
-    {
-        _inst = this;
-    }
-
-    public event Action<int> OnChangeColor;
-
-    public event Action OnLight;
-
-    public event Action<int> OnSelected;
-
-    public event Action OnMove;
-
-    // public event Action<int> OnSelectedMove;
-    //Remove
-     public void TriggerChangeColor(int id)
-    {
-        OnChangeColor?.Invoke(id);
-    }
-
-    public void TriggerLight()
-    {
-        OnLight?.Invoke();
-    }
-
-    public void TriggerSelected(int id)
-    {
-        OnSelected?.Invoke(id);
-    }
-
-    public void TriggerMove()
-    {
-        OnMove?.Invoke();
     }
 }

@@ -8,6 +8,9 @@ using Yarn.Unity.Example;
 using UnityEngine.TextCore.Text;
 using System;
 
+
+namespace PointClickerEngine
+{
 [RequireComponent(typeof(SpriteRenderer))]
 public class CAnimaticController : MonoBehaviour
 {   
@@ -85,5 +88,7 @@ public class CAnimaticController : MonoBehaviour
 
 
 
-}   
+}  
+
+}
    

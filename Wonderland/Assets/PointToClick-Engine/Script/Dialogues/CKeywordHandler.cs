@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 
+namespace PointClickerEngine
+{
 public class CKeywordHandler : MonoBehaviour
 {
 
@@ -62,4 +64,5 @@ public class CKeywordHandler : MonoBehaviour
     }
 
   
+}
 }

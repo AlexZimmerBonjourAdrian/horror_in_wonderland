@@ -3,31 +3,67 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using PointClickerEngine;
 public class CGameManager : MonoBehaviour
 {
     // Referencias a otros managers
     public CManagerSFX sfxManager;
 
-    // Estado del juego
+    // Estados del juego
    // [SerializeField] private int currentLevel;
     //[SerializeField] private int playerLives;
 
+    public enum GameState
+{
+    MainMenu,
+    Playing,
+    Paused,
+    GameOver,
+    DosState,
+    TresState,
+    DialogueState,
+    FPSState,
+    InventorieState,
+    VisualNovelState,
+    OpenWorldState,
+    PuzzleState,
+
+};
  
 
     [SerializeField] private bool IsEndGame;
 
-    [SerializeField] private bool Is3D;
+    [SerializeField] private bool Is3D = false;
    
     [SerializeField] private bool PuzzleMode = false;
 
-     [SerializeField] private float lerpDuration = 2f; // Duración de la transición
+    [SerializeField] private float lerpDuration = 2f; // Duración de la transición
     private Coroutine cameraLerpCoroutine; // Para controlar la corrutina
    //private Transform originalCameraTransform; 
    private Vector3 originalCameraPosition; 
    private Quaternion originalCameraRotation;
 
-   private GameObject PlayerGameobject;
+    private GameState currentState;
+   
+    private Dictionary<GameState, CGameState> states; 
+   
+    //    states = new Dictionary<GameState, CGameState>()
+    //     {
+    //          { GameState.MainMenu, new CMainMenuState(this) },
+    //          { GameState.Playing, new CPlayingState(this) },
+    //          { GameState.Paused, new CPausedState(this) },
+    //          { GameState.GameOver, new CGameOverState(this) },
+    //         { GameState.DosState, new C2DState(this) },
+    //          { GameState.TresState, new C3DState(this) },
+    //           { GameState.DialogueState, new CDialogueState(this) },
+    //             { GameState.FPSState, new CFPSState(this) },
+    //               { GameState.InventorieState, new CInventorieState(this) },
+    //                 { GameState.VisualNovelState, new CVisualNovelState(this) },
+    //                   { GameState.OpenWorldState, new COpenWorldState(this) },
+    //                     { GameState.PuzzleState, new CPuzzleState(this) },      
+    //     }; 
+    
+    private GameObject PlayerGameobject;
      [SerializeField] private Transform originalCameraTransform;
 
 
@@ -35,7 +71,7 @@ public class CGameManager : MonoBehaviour
     {
         
         if(PuzzleMode == false)
-        {
+        { 
            
         // Detener la corrutina si ya hay una en progreso
             if (cameraLerpCoroutine != null )
@@ -48,7 +84,7 @@ public class CGameManager : MonoBehaviour
        
     }
 
-    //Singleton
+    // Singleton
      public static CGameManager Inst
     {
         get
@@ -65,7 +101,7 @@ public class CGameManager : MonoBehaviour
     private static CGameManager _inst;
 
     private AsyncOperation _CurrentLoadScene;
-
+    
    public void Awake()
     {
     if(_inst != null && _inst != this)
@@ -80,14 +116,44 @@ public class CGameManager : MonoBehaviour
 
 
     private void Start()
-    // Métodos para inicializar y finalizar el juego
+    // Métodos para inicializar y finalizar el juego 
     {
       
         PlayerGameobject = GameObject.FindGameObjectWithTag("Player");
-     
+         CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective); 
+        originalCameraPosition = Camera.main.transform.position;
+        //   states = new Dictionary<GameState, CGameState>()
+        // {
+        //      { GameState.MainMenu, new CMainMenuState(this) },
+        //      { GameState.Playing, new CPlayingState(this) },
+        //      { GameState.Paused, new CPausedState(this) },
+        //      { GameState.GameOver, new CGameOverState(this) },
+        //     { GameState.DosState, new C2DState(this) },
+        //      { GameState.TresState, new C3DState(this) },
+        //       { GameState.DialogueState, new CDialogueState(this) },
+        //         { GameState.FPSState, new CFPSState(this) },
+        //           { GameState.InventorieState, new CInventorieState(this) },
+        //             { GameState.VisualNovelState, new CVisualNovelState(this) },
+        //               { GameState.OpenWorldState, new COpenWorldState(this) },
+        //                 { GameState.PuzzleState, new CPuzzleState(this) },      
+        // }; 
+        originalCameraRotation = Camera.main.transform.rotation;
+        
     }
+
+    //     public void SwitchState(GameState newState)
+    // {
+    //     if (currentState != null)
+    //     {
+    //         currentState.Exit(); // Exit the current state
+    //     }
+
+    //     currentState = states[newState]; // Get the new state from the dictionary
+    //     currentState.Enter(); // Enter the new state
+    // }
+
     public void InitializeGame()
-    {
+    { 
         // Cargar niveles, configurar controles, etc.
 
     }
@@ -95,7 +161,7 @@ public class CGameManager : MonoBehaviour
     public void EndGame()
     {
         // Guardar puntuación, mostrar pantalla de game over, etc.
-        
+       
     }
 
     // Métodos para manejar eventos del juego
@@ -112,14 +178,14 @@ public class CGameManager : MonoBehaviour
     // Métodos para actualizar y renderizar el juego
     public void Update()
     {
-        // Actualizar física, renderizar gráficos, etc.
+        // Actualizar física, renderizar gráficos, etc. 
        
     }
 
     public void RenderGame()
     {
         // Renderizar gráficos, mostrar HUD, etc.
-    }
+    } 
 
 
     public void SaveGame()
@@ -146,16 +212,16 @@ public class CGameManager : MonoBehaviour
     {
          // Elimina un item del inventario
     }
-    
+
     public void SwitchMechanics2DTo3D(bool Genere)
     {
         // Cambia las mecanicas de 2D a 3D O 3D a 2d
     }
-    
-    
+
+
   public void LearpBackToOriginalPosition()
     {
-        if (cameraLerpCoroutine != null)
+        if (cameraLerpCoroutine != null )
         {
             StopCoroutine(cameraLerpCoroutine);
         }
@@ -163,10 +229,10 @@ public class CGameManager : MonoBehaviour
     }
     private IEnumerator LerpCameraToPuzzle(Transform targetTransform)
     {
-   
+
     float timeElapsed = 0f;
     Transform startingPos = PlayerGameobject.transform;
-    //Quaternion startingRot = Camera.main.transform.rotation;
+    Quaternion startingRot = Camera.main.transform.rotation;
 
     while (timeElapsed < lerpDuration)
     {
@@ -176,10 +242,9 @@ public class CGameManager : MonoBehaviour
         timeElapsed += Time.deltaTime;
         yield return null;
     }
-    PuzzleMode = true; 
-    
-}
+    PuzzleMode = true;
 
+    }
 
   private IEnumerator LerpCameraToBackOrigianlPosition()
     {
@@ -195,10 +260,10 @@ public class CGameManager : MonoBehaviour
         timeElapsed += Time.deltaTime;
         yield return null;
     }
-    PuzzleMode = false; 
+    PuzzleMode = false;
 
     //Guardar la posición original si es la primera vez que se llama a LerpCamera
-    }
+   }
 
     public bool GetPuzzleMode()
     {
@@ -206,7 +271,7 @@ public class CGameManager : MonoBehaviour
     }
 
        #region  DebugVariables
-   
+
      
     // public void ActivateCamera1(Transform target)
     // {
@@ -240,5 +305,28 @@ public class CGameManager : MonoBehaviour
     //     CCameraManager.Inst.camera2.gameObject.SetActive(false);
     // }
     #endregion
-    
+public abstract class CGameState  
+{
+  protected  CGameManager gameManager; // Variable para acceder al GameManager
+
+        // Constructor que recibe el GameManager
+        public CGameState(CGameManager gameManager) 
+        {
+            this.gameManager = gameManager;
+        }
+
+        // Métodos abstractos que deben ser implementados por las clases hijas
+        public virtual void Enter()
+        {
+
+        }
+        public virtual void Update()
+         {
+
+         }
+        public virtual void Exit()
+        {
+
+        }
+    }
 }
