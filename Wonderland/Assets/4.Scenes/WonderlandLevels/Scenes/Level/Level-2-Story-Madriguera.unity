@@ -164,6 +164,12 @@ GameObject:
   m_Component:
   - component: {fileID: 15141503}
   - component: {fileID: 15141504}
+  - component: {fileID: 15141510}
+  - component: {fileID: 15141509}
+  - component: {fileID: 15141508}
+  - component: {fileID: 15141507}
+  - component: {fileID: 15141506}
+  - component: {fileID: 15141505}
   m_Layer: 0
   m_Name: ManagerDialogue
   m_TagString: Untagged
@@ -199,11 +205,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 0}
-  varibleStorage: {fileID: 0}
+  dialogueSaver: {fileID: 0}
+  dialogueText: {fileID: 0}
   ListYarnProyect:
   - {fileID: 7545569452688597077, guid: 3ce7b7915676ed641b2dbd949d573b39, type: 3}
   - {fileID: 7545569452688597077, guid: 71a14d67a876f3745aab6a77ffe7e5be, type: 3}
   ActualYarn: {fileID: 0}
+--- !u!114 &15141505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15141502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b9b28a65867e743adc693a3dee724a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &15141506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15141502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5620f86216066204e9ffa3a1d1ec0b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &15141507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15141502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f0752fcad46c14596135d462faffb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &15141508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15141502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b59599f188edf4bb9936c7b341d9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &15141509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15141502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f02c002802c02458b0978cd0d2b776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &15141510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15141502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cbd197dd4914f4fada7468d20f54b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &21992010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,9 +1811,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4590287877a373d41bf54623d0e99f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  OnPlayAnimatic: {fileID: 0}
   id: 1
-  puzzleCameraTarget: {fileID: 4189086}
   CharacterName: Conejo_Blanco
+  barkNodes: []
 --- !u!54 &704922365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2648,9 +2729,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4590287877a373d41bf54623d0e99f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  OnPlayAnimatic: {fileID: 0}
   id: 0
-  puzzleCameraTarget: {fileID: 0}
   CharacterName: Loop
+  barkNodes: []
 --- !u!114 &1171716645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3002,13 +3085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxManager: {fileID: 0}
-  score: 0
-  currentLevel: 0
-  playerLives: 0
-  progressPorcement: 0
   IsEndGame: 0
   Is3D: 0
-  IsTalking: 0
   PuzzleMode: 0
   lerpDuration: 0.5
   originalCameraTransform: {fileID: 1510082963}
@@ -3988,6 +4066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DebuCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525534219897014282, guid: 42053c2cb1b1feb46a1011fd3517ffcf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5687980323475751214, guid: 42053c2cb1b1feb46a1011fd3517ffcf,
         type: 3}

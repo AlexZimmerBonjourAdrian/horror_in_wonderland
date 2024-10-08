@@ -13,7 +13,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Weapons
   - Water
   - UI
   - 
@@ -45,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Main
+    uniqueID: 3791501633
     locked: 0
   - name: Dialogs
     uniqueID: 3364122167
