@@ -27,22 +27,22 @@ EditorBuildSettings:
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-4B.unity
     guid: 05b146f7e8e06db4984e6d566e4ab99a
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogRoleplaySystem-Simple.unity
+    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogRoleplaySystem-Simple.unity
     guid: 0eb8c9f52494de044b0fb5e9f9f6f9f0
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogDebateSystem-Simple.unity
+    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogDebateSystem-Simple.unity
     guid: 15c2d907cb36ba240b576f4f07644a1c
   - enabled: 1
     path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogDiceRollSystem-Simple.unity
     guid: 24163bfae00288e4fbc80c712274c64c
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogInterrogativeSystem-Simple.unity
+    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogInterrogativeSystem-Simple.unity
     guid: 314620d4bfccc8149a292210836c8003
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogKeywordsSystem-Simple.unity
+    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogKeywordsSystem-Simple.unity
     guid: 74f4696194efe6f4fbe803838e215674
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 93eb7ba1d624ca74894c0b95b95ae1ed,
       type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
-      guid: ada0839a273a5e5489a05db10d97dd19, type: 2}
+      guid: 86131d75a2a894d409dddc18309e3e11, type: 2}
