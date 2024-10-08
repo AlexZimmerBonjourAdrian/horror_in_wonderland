@@ -69,6 +69,9 @@ public class CLevelController : MonoBehaviour
             case 3:
                 Level = (CLevel3)FindAnyObjectByType<CLevelGeneric>(); 
                 break;
+            case 4:
+                 Level = (CLevelDialogue)FindAnyObjectByType<CLevelGeneric>(); 
+                break;
             default:
                 Debug.Log("No existen el nivel");
                 break;

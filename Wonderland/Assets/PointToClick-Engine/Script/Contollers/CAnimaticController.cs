@@ -8,11 +8,14 @@ using Yarn.Unity.Example;
 using UnityEngine.TextCore.Text;
 using System;
 
+
+namespace PointClickerEngine
+{
 [RequireComponent(typeof(SpriteRenderer))]
 public class CAnimaticController : MonoBehaviour
 {   
     
-
+    
     [SerializeField]private List<CAnimaticData> animaticData_List;
 
     //Code to planning Manager Dialogs
@@ -21,16 +24,15 @@ public class CAnimaticController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
-
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+       
+        if(Input.GetKeyDown(KeyCode.Space) && CEngineManager.Inst.GetIsDebug())
         {
             StartAnimatic();
             NextAnimatic();
@@ -38,7 +40,7 @@ public class CAnimaticController : MonoBehaviour
 
 
     }
-    private void StartAnimatic()
+    public void StartAnimatic()
     {
         if(ActualAnimatic == null)
         {   
@@ -86,5 +88,7 @@ public class CAnimaticController : MonoBehaviour
 
 
 
-}   
+}  
+
+}
    

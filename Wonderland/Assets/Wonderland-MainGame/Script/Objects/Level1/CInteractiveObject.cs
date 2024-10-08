@@ -8,7 +8,7 @@ public class CInteractiveObject : MonoBehaviour,Iinteract
     public void Awake()
     {
         CPointToClick.Inst.CreatePoint();
-        CGameEvent.current.OnChangeColor += Selected;
+        //CGameEvent.current.OnChangeColor += Selected;
     }
 
     public void Oninteract()

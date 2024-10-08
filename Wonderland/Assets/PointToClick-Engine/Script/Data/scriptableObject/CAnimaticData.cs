@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+namespace PointClickerEngine
+{
 [CreateAssetMenu(fileName = "NewAnimatioNData", menuName = "PointToClickEngine/Animatic")]
 [Serializable]
 public class CAnimaticData : ScriptableObject
@@ -14,12 +17,14 @@ public class CAnimaticData : ScriptableObject
 
    public CAnimaticData _NextAnimatic;
   [SerializeField] private bool _hasPlayed;
-    
+  [SerializeField] private bool _isReplay;
+
     public bool HasPlayed 
     { 
         get => _hasPlayed; 
         set => _hasPlayed = value; 
     }
+
 
 //     public void PlayAnimatic(CAnimaticData animaticData)
 // {
@@ -35,4 +40,5 @@ public class CAnimaticData : ScriptableObject
 //     // Marcar la animatic como reproducida
 //     animaticData.HasPlayed = true;
 // }
+}
 }

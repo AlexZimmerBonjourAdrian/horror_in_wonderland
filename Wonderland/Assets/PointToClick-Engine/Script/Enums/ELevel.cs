@@ -11,6 +11,7 @@ public static class ELevel
         Level1,
         Level2,
         Level3,
+        LevelDialogue,
     }
 
     public enum LevelType

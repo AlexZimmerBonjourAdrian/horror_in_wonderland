@@ -5,27 +5,42 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Menu/Main/MainMenu-Prototype.unity
     guid: 96d0fe0b5dba7d14892fb33f8d025be2
-  - enabled: 1
+  - enabled: 0
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-1.unity
     guid: 135589f2b01c6d24b8bbabed0217e9e8
-  - enabled: 1
+  - enabled: 0
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-2 Android.unity
     guid: 075977f08eacfac4e83364f036aa3f88
   - enabled: 0
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-2.unity
     guid: 2b480a1a39a3a2b4ca31754a9cfca1c9
-  - enabled: 1
+  - enabled: 0
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-3.unity
     guid: d85f374483fb94c49ace61155456ea4d
-  - enabled: 1
+  - enabled: 0
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-4A.unity
     guid: b764e4d56303b084e9ba4627ccae0a5c
-  - enabled: 1
+  - enabled: 0
     path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-4B.unity
     guid: 05b146f7e8e06db4984e6d566e4ab99a
+  - enabled: 1
+    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogRoleplaySystem-Simple.unity
+    guid: 0eb8c9f52494de044b0fb5e9f9f6f9f0
+  - enabled: 1
+    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogDebateSystem-Simple.unity
+    guid: 15c2d907cb36ba240b576f4f07644a1c
+  - enabled: 1
+    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogDiceRollSystem-Simple.unity
+    guid: 24163bfae00288e4fbc80c712274c64c
+  - enabled: 1
+    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogInterrogativeSystem-Simple.unity
+    guid: 314620d4bfccc8149a292210836c8003
+  - enabled: 1
+    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogKeywordsSystem-Simple.unity
+    guid: 74f4696194efe6f4fbe803838e215674
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 93eb7ba1d624ca74894c0b95b95ae1ed,
       type: 2}
