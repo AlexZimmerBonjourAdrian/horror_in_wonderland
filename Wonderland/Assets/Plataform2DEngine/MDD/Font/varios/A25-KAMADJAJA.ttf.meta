@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ec2e95464e545224eb8424303379c50b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: A25-KAMADJAJA
+  fontNames:
+  - A25-KAMADJAJA
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c574c8efd16e78643bbb62d855e08a80, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

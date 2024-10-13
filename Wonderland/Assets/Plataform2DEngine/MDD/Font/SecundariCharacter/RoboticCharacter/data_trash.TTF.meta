@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 0edc501c383141340acc28cdb0e4baca
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Data Trash
+  fontNames:
+  - Data Trash
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f0c25a94081d8a1439c5dc926f7d523c, type: 3}
+  - {fileID: 12800000, guid: 6b98b405e301aaf49b202ecbab92d429, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
