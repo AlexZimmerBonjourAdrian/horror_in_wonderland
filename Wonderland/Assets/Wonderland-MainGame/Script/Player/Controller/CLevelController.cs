@@ -48,8 +48,14 @@ public class CLevelController : MonoBehaviour
       switch((int)LevelNumber)
        {
             case 0:
-               
+                Level = (CLevel1)FindAnyObjectByType<CLevelGeneric>();
+                
+                if (Level.GetIsComplete())
+                {
+                  
+                }
                 break;
+              
             case 1:
                 Level = (CLevel1)FindAnyObjectByType<CLevelGeneric>();
                 

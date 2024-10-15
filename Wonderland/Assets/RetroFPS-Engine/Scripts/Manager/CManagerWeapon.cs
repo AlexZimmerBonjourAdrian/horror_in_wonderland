@@ -12,6 +12,7 @@ namespace Fps
         [SerializeField] private List<GameObject> _allWeaponAssets;
         [SerializeField] private List<GameObject> weapons = new List<GameObject>();
 
+
         public List<CWeapon> armas = new List<CWeapon>();
 
         [SerializeField] private Vector3 vectorOffsetSpawnWeapon;
@@ -46,21 +47,48 @@ namespace Fps
                 weapons.Add(nuevaWeapon.gameObject);
            }    
         }
+        
+   public void EquipWeapon()
+    {
+        float scrollDirection = Input.GetAxis("Mouse ScrollWheel");
 
-        private void SelectedWeapon()
+        if (scrollDirection != 0f && weapons.Count > 0) // Only proceed if scrolling and there are weapons
         {
-            
-        }
-       
-        private void EquipWeapon()
-        {
-           
-        }
+            // Find the index of the currently active weapon
+            int currentWeaponIndex = -1;
+            for (int i = 0; i < weapons.Count; i++)
+            {
+                if (weapons[i].activeSelf)
+                {
+                    currentWeaponIndex = i;
+                    break;
+                }
+            }
 
-        // public GameObject Spawn(Vector3 post, GameObject _Weapon)
-        // {
-          
-        // }
-        //Probar
+            // Deactivate the current weapon
+            if (currentWeaponIndex != -1)
+            {
+                weapons[currentWeaponIndex].SetActive(false);
+            }
+
+            // Calculate the new weapon index based on scroll direction
+            if (scrollDirection > 0f)
+            {
+                currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Count; // Cycle forward
+            }
+            else
+            {
+                currentWeaponIndex--;
+                if (currentWeaponIndex < 0)
+                {
+                    currentWeaponIndex = weapons.Count - 1; // Cycle backward
+                }
+            }
+
+            // Activate the new weapon
+            weapons[currentWeaponIndex].SetActive(true);
         }
+    }
 }
+}
+

@@ -5,42 +5,52 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Menu/Main/MainMenu-Prototype.unity
-    guid: 96d0fe0b5dba7d14892fb33f8d025be2
-  - enabled: 0
-    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-1.unity
-    guid: 135589f2b01c6d24b8bbabed0217e9e8
-  - enabled: 0
-    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-2 Android.unity
-    guid: 075977f08eacfac4e83364f036aa3f88
-  - enabled: 0
-    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-2.unity
-    guid: 2b480a1a39a3a2b4ca31754a9cfca1c9
-  - enabled: 0
-    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-3.unity
-    guid: d85f374483fb94c49ace61155456ea4d
-  - enabled: 0
-    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-4A.unity
-    guid: b764e4d56303b084e9ba4627ccae0a5c
-  - enabled: 0
-    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level/Level-4B.unity
-    guid: 05b146f7e8e06db4984e6d566e4ab99a
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogRoleplaySystem-Simple.unity
-    guid: 0eb8c9f52494de044b0fb5e9f9f6f9f0
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/MainMenu.unity
+    guid: abfc3eefedd8858438bb31a2299598b2
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogDebateSystem-Simple.unity
-    guid: 15c2d907cb36ba240b576f4f07644a1c
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/NewGame.unity
+    guid: 721893c523a10824ab635280d93bdade
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/Transition-Cinematic/Simple/DialogDiceRollSystem-Simple.unity
-    guid: 24163bfae00288e4fbc80c712274c64c
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-0-Door.unity
+    guid: 27ad1f3e992f7034c951a6b6f78ff0c2
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogInterrogativeSystem-Simple.unity
-    guid: 314620d4bfccc8149a292210836c8003
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-1.unity
+    guid: a5d291f1c3c6b9c4db042ebe4115c164
   - enabled: 1
-    path: Assets/4.Scenes/DebugLevels/PointToClick/Simple/DialogKeywordsSystem-Simple.unity
-    guid: 74f4696194efe6f4fbe803838e215674
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-2.unity
+    guid: 38ca71c510f4ada45aa7ad6f21e04460
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-2
+      Android.unity
+    guid: 480e453297e326344aec5b24a4d42a66
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-2-Original.unity
+    guid: a26fec9a652b2da4c93b36faaa0602a5
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-3.unity
+    guid: 1ddfd16e5bf620a4d939438751bb42e4
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-3-Death.unity
+    guid: 00c33188779ddb54189b02d0db7050c2
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-4.unity
+    guid: defebf5dfae81c1409706870e8ad513d
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-5.unity
+    guid: 3bc81fa44a31cb247b9c2072a0614552
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-9.unity
+    guid: 840a1fd20db11594da38e45e1079ecd2
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-10.unity
+    guid: 6de658a5de0bbdb479871d5aeaf44262
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-FinalBad.unity
+    guid: 93e97fc8da156d74391ac20aad708d39
+  - enabled: 1
+    path: Assets/4.Scenes/PlayHolder/1.Prototype-Games/Games/Level-Redisaign/Level-FInalGood.unity
+    guid: 60d478a0e2012f94c9d554fce949995a
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 93eb7ba1d624ca74894c0b95b95ae1ed,
       type: 2}

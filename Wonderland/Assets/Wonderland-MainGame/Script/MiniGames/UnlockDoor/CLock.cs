@@ -22,7 +22,7 @@ public class CLock : MonoBehaviour
     [Range(0.0f, 1.0f)]
     private float RoundKnifeForceMin;
 
-    private float RoundKnifeIncremene = 0.4f;
+    //private float RoundKnifeIncremene = 0.4f;
   
 
 

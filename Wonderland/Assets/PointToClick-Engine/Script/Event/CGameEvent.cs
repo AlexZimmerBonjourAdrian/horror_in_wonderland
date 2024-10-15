@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+
 
 public class CGameEvent<T> 
 {

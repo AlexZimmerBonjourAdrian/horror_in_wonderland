@@ -33,7 +33,7 @@ public class CGameManager : MonoBehaviour
 
     [SerializeField] private bool IsEndGame;
 
-    [SerializeField] private bool Is3D = false;
+    
    
     [SerializeField] private bool PuzzleMode = false;
 

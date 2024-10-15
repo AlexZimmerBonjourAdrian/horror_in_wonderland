@@ -9,7 +9,6 @@ public class CMICILSPSystem : MonoBehaviour
     //SINGLETON
     private static CMICILSPSystem _instance;
 
-    
     public static CMICILSPSystem Instance
     {
         get
@@ -26,6 +25,12 @@ public class CMICILSPSystem : MonoBehaviour
 
         public StatTemplate CurrentStatsTemplate { get; private set; } 
 
+    public StatTemplate GetStatTemplate()
+    {
+        return CurrentStatsTemplate;
+    }
+
+    // Start is called before the first frame update}
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -74,14 +79,14 @@ public class CMICILSPSystem : MonoBehaviour
     //           [YarnCommand]
 
            
-   public int GetStat(Stats stat)
+   public virtual int GetStat(Stats stat)
     {
         return currentStats[stat];
     }
 
    // [YarnFunction("GetStatByName")]
    //[YarnParameter("statName")] 
-    public int GetStatByName(string statName)
+    public  virtual  int GetStatByName(string statName)
     {
         // Convertir el nombre de la estadística a su valor enum
         if (System.Enum.TryParse<Stats>(statName, out Stats stat))
@@ -98,7 +103,7 @@ public class CMICILSPSystem : MonoBehaviour
 
   // [YarnParameter("statIndex")] 
  
-public int GetStatByIndex(int statIndex)
+public virtual  int GetStatByIndex(int statIndex)
 {
     // Asegurarse de que el índice esté dentro del rango válido
     if (statIndex >= 0 && statIndex < System.Enum.GetValues(typeof(Stats)).Length)
@@ -112,7 +117,7 @@ public int GetStatByIndex(int statIndex)
     }
 }
 
-    public void PrintStats(StatTemplate template)
+    public virtual  void PrintStats(StatTemplate template)
     {
         Debug.Log("============================");
         Debug.Log("Stats for " + template.Name + ":");
@@ -124,23 +129,23 @@ public int GetStatByIndex(int statIndex)
 
 
     }
-    public void SetStat(Stats stat, int value)
+    public virtual  void SetStat(Stats stat, int value)
     {
         currentStats[stat] = Mathf.Clamp(value, 1, 10);
     }
 
-    public void IncreaseStat(Stats stat, int amount)
+    public virtual  void IncreaseStat(Stats stat, int amount)
     {
        currentStats[stat] = currentStats[stat] + amount; 
        
     }
 
-    public void DecreaseStat(Stats stat, int amount)
+    public virtual  void DecreaseStat(Stats stat, int amount)
     {
         SetStat(stat, currentStats[stat] - amount);
     }
 
-    public class StatTemplate
+    public  class StatTemplate
     {
         public string Name;
         public Dictionary<Stats, int> BaseStats;
@@ -218,7 +223,7 @@ public int GetStatByIndex(int statIndex)
     });
 
      // Update ApplyTemplate to set CurrentStatsTemplate and initialize currentStats:
-    public void ApplyTemplate(StatTemplate template)
+    public virtual  void ApplyTemplate(StatTemplate template)
     {
         CurrentStatsTemplate = template; // Store the active template
 
@@ -229,7 +234,7 @@ public int GetStatByIndex(int statIndex)
         }
     }
 
-    public StatTemplate GetRandomTemplate()
+    public virtual  StatTemplate GetRandomTemplate()
 {
     // Array with all your templates
     StatTemplate[] templates = new StatTemplate[] { 

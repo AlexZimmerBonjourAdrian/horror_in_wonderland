@@ -11,7 +11,7 @@ public class CAnimationController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private int currentFrame = 2;
-    private bool isPlaying = false;
+
 
     #region  Debug-Region
     [SerializeField]private List<Sprite> animationFrames = new List<Sprite>();
@@ -47,7 +47,7 @@ public class CAnimationController : MonoBehaviour
         
         private IEnumerator PlayAnimationCoroutine()
         {
-            isPlaying = true;
+            
             currentFrame = 0;
 
             while (currentFrame < animationFrames.Count)
@@ -56,7 +56,7 @@ public class CAnimationController : MonoBehaviour
                 currentFrame++;
                 yield return new WaitForSeconds(0.1f); // Ajusta la velocidad de la animación aquí
             }
-            isPlaying = false;
+           
         }
 
           public void SetFrame(int frameIndex)
