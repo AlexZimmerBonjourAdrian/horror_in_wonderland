@@ -39,14 +39,18 @@ public class CPersistenceData : MonoBehaviour
     switch (i)
     {
         case 0:
+
          CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective);
-        break; 
+        break;
+
         case 1:
+
          CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.HeroinaDeCapaBlanca); 
          break;
            case 2:
          CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.LocaPerturbada); 
          break;
+         
            case 3:
          CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.MonstruoSinCorazon); 
          break;
