@@ -63,7 +63,15 @@ public class CLevelManager : MonoBehaviour
         _CurrentLoadScene = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
     }
 
-    
+     public int GetCurrentSceneID()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
+   public void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void ApplicationQuit()
     {
         Application.Quit();

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-
+using System.IO;
 public class CPersistenceData : MonoBehaviour
 {
 
    private static CPersistenceData _instance;
+    private string savePath;
+    
+    
    public static CPersistenceData Instance
     {
         get
@@ -32,6 +35,9 @@ public class CPersistenceData : MonoBehaviour
         }
         _instance = this;
         DontDestroyOnLoad(gameObject);
+
+        savePath = Path.Combine(Application.persistentDataPath, "gamedata.json"); 
+
     }
 
    public void SetArquetipe(int i)
@@ -58,10 +64,47 @@ public class CPersistenceData : MonoBehaviour
        
 
    }
+    public void SaveGame()
+    {
+        // GameData data = new GameData();
+        // data.IsTakeShootgun = .Inst.GetIsTakeShootGun(); // Get data from CLevel2
+   
+
+        // string jsonData = JsonUtility.ToJson(data, true); // Serialize to JSON
+        // File.WriteAllText(savePath, jsonData);
+        // Debug.Log("Game saved to: " + savePath);
+    }
+
     public void SaveDataArquetipe()
     {
-        CMICILSPSystem.StatTemplate statTemplate = null;
-        statTemplate = CMICILSPSystem.Instance.GetStatTemplate();   
-        CMICILSPSystem.Instance.PrintStats(statTemplate);   
+            CMICILSPSystem.StatTemplate statTemplate = null;
+            statTemplate = CMICILSPSystem.Instance.GetStatTemplate();   
+            CMICILSPSystem.Instance.PrintStats(statTemplate);  
+
     }
+}
+
+[System.Serializable] // Make this class serializable
+public class GameData
+{
+
+    public bool IsTakeShootgun;
+    
+    
+    public bool IsRevolver;
+    
+    public bool IsMagRevolver;
+    
+    public bool IsShootGunShell;
+
+
+    public bool IsFinished;
+
+
+    public bool IsTakeCard;
+
+
+    public bool IsShootMusicBox;
+
+
 }

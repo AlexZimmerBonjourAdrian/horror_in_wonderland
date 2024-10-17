@@ -9,6 +9,7 @@ TagManager:
   - Puzzle
   - Camera-1
   - Camera-2
+  - Interactive
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Weapons
   - Water
   - UI
-  - 
+  - IsGrounded
   - 
   - 
   - 
@@ -45,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Weapon
+    uniqueID: 1442368819
     locked: 0
   - name: Main
     uniqueID: 3791501633

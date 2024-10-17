@@ -48,14 +48,14 @@ public class CPlayer3DController : MonoBehaviour
     _moveDirection = direction_Transform.forward * zVertical; 
     _moveDirection += direction_Transform.right * xHorizontal; 
 
-    if (_controller.isGrounded)
-    {
-        _velocity.y = 0f; // Reiniciar la velocidad vertical si está en el suelo
-        if (Input.GetButtonDown("Jump"))
-        {
-            _velocity.y = Mathf.Sqrt(jumpHeight * -2f * -gravity);   
-        }   
-    }
+    // if (_controller.isGrounded)
+    // {
+    //     _velocity.y = 0f; // Reiniciar la velocidad vertical si está en el suelo
+    //     if (Input.GetButtonDown("Jump"))
+    //     {
+    //         _velocity.y = Mathf.Sqrt(jumpHeight * -2f * -gravity);   
+    //     }   
+    // }
 
     // Aplicar gravedad siempre
     _velocity.y -= gravity * Time.deltaTime;

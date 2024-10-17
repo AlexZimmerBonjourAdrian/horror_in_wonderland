@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class CWeapon : MonoBehaviour
 {
-   public string Nombre;
+    public string Nombre;
     public int Damage;
     public float FireRate;
+
+    public bool Is2d;
+
+
+
+
 
 }

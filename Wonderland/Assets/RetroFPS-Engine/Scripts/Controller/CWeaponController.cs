@@ -3,16 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CWeaponController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+{   
+    public float range = 100f; // Rango del raycast
+    public Color laserColor = Color.red; // Color del Gizmo
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1")) // Cambia "Fire1" por el botón que desees
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, range))
+        {
+            Debug.Log("Golpeando: " + hit.collider.gameObject.name);
+            hit.collider.GetComponent<IDamage>().OnDamage();
+
+            // Aquí puedes agregar lógica para manejar el impacto, 
+            // como infligir daño a un enemigo.
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = laserColor;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * range);
     }
 }
+
+

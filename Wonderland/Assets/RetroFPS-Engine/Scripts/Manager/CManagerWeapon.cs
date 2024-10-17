@@ -6,89 +6,68 @@ namespace Fps
 {
     public class CManagerWeapon : MonoBehaviour //IDataPersistence
     {
-        //}
-        [SerializeField]
-        private GameObject[] _allWeapon = new GameObject[4];
-        [SerializeField] private List<GameObject> _allWeaponAssets;
-        [SerializeField] private List<GameObject> weapons = new List<GameObject>();
 
-
-        public List<CWeapon> armas = new List<CWeapon>();
-
-        [SerializeField] private Vector3 vectorOffsetSpawnWeapon;
-        [SerializeField] private Vector3 vectorOffsetRotationWeapon; 
-        private GameObject CurrentWeapon;
-        [SerializeField]private Transform _trasnformWeapon;
-        private static CManagerWeapon Inst;
-        public Transform SpawnCollection;
-        //private CManagerPickUp ManagerPickUp;
-   
-
+          [SerializeField] private List<GameObject> weapons;
+            private int currentWeaponIndex = 0;
+        private void Start()
+        {
+            // Get all children GameObjects that have a Weapon component
+            weapons = GetComponentsInChildren<CWeaponController>(true) // Include inactive children
+                                  .Select(weaponComponent => weaponComponent.gameObject) // Select the GameObject
+                                  .ToList();
+         SwitchWeapon(0);
+        }
     
-        public List<GameObject> GetListWeapon()
-        {
-            return weapons;
-        }
-        public void Update()
-        {
-           for(int i = weapons.Count -1; i>= 0; i--)
-          {
-            if (weapons[i] == null)
-                weapons.RemoveAt(i);
-         }
-            EquipWeapon();
-       
-        }
         
-        public void AddWeapon(CWeapon nuevaWeapon)
+    private void Update()
         {
-           if(weapons.Any(weapons => weapons.name == nuevaWeapon.name))
-           {
-                weapons.Add(nuevaWeapon.gameObject);
-           }    
-        }
-        
-   public void EquipWeapon()
-    {
-        float scrollDirection = Input.GetAxis("Mouse ScrollWheel");
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        if (scrollDirection != 0f && weapons.Count > 0) // Only proceed if scrolling and there are weapons
+            if (scroll > 0f)
+            {
+                NextWeapon();
+            }
+            else if (scroll < 0f)
+            {
+                PreviousWeapon();
+            }
+        }
+
+        private void NextWeapon()
         {
-            // Find the index of the currently active weapon
-            int currentWeaponIndex = -1;
+            currentWeaponIndex++;
+            if (currentWeaponIndex >= weapons.Count)
+            {
+                currentWeaponIndex = 0; // Vuelta al inicio
+            }
+
+            SwitchWeapon(currentWeaponIndex);
+        }
+
+        private void PreviousWeapon()
+        {
+            currentWeaponIndex--;
+            if (currentWeaponIndex < 0)
+            {
+                currentWeaponIndex = weapons.Count - 1; // Vuelta al final
+            }
+
+            SwitchWeapon(currentWeaponIndex);
+        }
+
+        private void SwitchWeapon(int newWeaponIndex)
+        {
+            // Desactivar todas las armas
             for (int i = 0; i < weapons.Count; i++)
             {
-                if (weapons[i].activeSelf)
-                {
-                    currentWeaponIndex = i;
-                    break;
-                }
+                weapons[i].SetActive(false);
             }
 
-            // Deactivate the current weapon
-            if (currentWeaponIndex != -1)
-            {
-                weapons[currentWeaponIndex].SetActive(false);
-            }
-
-            // Calculate the new weapon index based on scroll direction
-            if (scrollDirection > 0f)
-            {
-                currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Count; // Cycle forward
-            }
-            else
-            {
-                currentWeaponIndex--;
-                if (currentWeaponIndex < 0)
-                {
-                    currentWeaponIndex = weapons.Count - 1; // Cycle backward
-                }
-            }
-
-            // Activate the new weapon
-            weapons[currentWeaponIndex].SetActive(true);
+            // Activar la nueva arma seleccionada
+            weapons[newWeaponIndex].SetActive(true);
         }
     }
+      
 }
-}
+
 

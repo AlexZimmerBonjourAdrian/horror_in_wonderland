@@ -1,12 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public interface Iinteract 
+public interface IDamage
 {
     // Start is called before the first frame update
-    void Oninteract();
-    
-    
+   void OnDamage();
 }
