@@ -10,7 +10,7 @@ public class CWeapon : MonoBehaviour
 
     public bool Is2d;
 
-
+    
 
 
 

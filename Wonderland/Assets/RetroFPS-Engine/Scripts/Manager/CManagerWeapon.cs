@@ -8,6 +8,8 @@ namespace Fps
     {
 
           [SerializeField] private List<GameObject> weapons;
+        [SerializeField] private List<GameObject> availableWeapons = new List<GameObject>(); 
+
             private int currentWeaponIndex = 0;
         private void Start()
         {
@@ -15,7 +17,7 @@ namespace Fps
             weapons = GetComponentsInChildren<CWeaponController>(true) // Include inactive children
                                   .Select(weaponComponent => weaponComponent.gameObject) // Select the GameObject
                                   .ToList();
-         SwitchWeapon(0);
+     
         }
     
         
@@ -66,8 +68,35 @@ namespace Fps
             // Activar la nueva arma seleccionada
             weapons[newWeaponIndex].SetActive(true);
         }
+            
+        public void AddWeapon(GameObject weaponPrefab)
+        {
+             GameObject newWeapon = Instantiate(weaponPrefab, transform); 
+            newWeapon.SetActive(false);
+            if(availableWeapons.Contains(newWeapon) == false)
+            availableWeapons.Add(newWeapon);
+            UpdateSelectableWeapons(); 
+        }
+    
+        private void UpdateSelectableWeapons()
+    {
+        // Limpiar la lista de armas (weapons)
+        weapons.Clear();
+
+        // Agregar las armas disponibles a la lista de armas seleccionables
+        weapons.AddRange(availableWeapons);
+
+        // Asegurarse de que el índice actual sea válido
+        currentWeaponIndex = Mathf.Clamp(currentWeaponIndex, 0, weapons.Count - 1);
+
+        // Si hay armas disponibles, activar la actual
+        if (weapons.Count > 0)
+        {
+            SwitchWeapon(currentWeaponIndex);
+        }
     }
       
+}
 }
 
 
