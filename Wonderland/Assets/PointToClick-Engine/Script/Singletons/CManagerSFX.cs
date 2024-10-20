@@ -37,7 +37,11 @@ public class CManagerSFX : MonoBehaviour
         _inst = this;
     }
 
-
+public void Start()
+{
+    CGameEvents.OnPlaySound.Subscribe(PlaySound);
+}
+    
     [SerializeField] public List<AudioClip> ListSFX;
     [SerializeField] public AudioMixer audioMixer;
 
@@ -45,11 +49,7 @@ public class CManagerSFX : MonoBehaviour
 
 
     [SerializeField]public Dictionary<AudioClip, string> soundMap = new Dictionary<AudioClip, string>();
-    public void Update()
-    {
-//    ListSounds.RemoveAll(sound => sound == null);
-    }
-    
+
     public void AddSound()
     {
     GameObject soundObject = new GameObject("Sound");
