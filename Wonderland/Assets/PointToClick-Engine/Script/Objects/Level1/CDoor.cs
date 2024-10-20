@@ -9,13 +9,12 @@ public class CDoor : MonoBehaviour, Iinteract
     private int IndexLevel = 0;
     [SerializeField]
     private bool ThisLevelIsComplete = false;
-    private SpriteRenderer SpriteRender;
-    private GameObject Loading;
-    
+    private SpriteRenderer SpriteRender;   
 
     private void Awake()
     {
         CPointToClick.Inst.CreatePoint(); 
+        CGameEvents.OnActivateDoor.Subscribe(this.ViewDoor);
         
         
     }

@@ -17,7 +17,7 @@ public class CLightSwitch : CGenericObject
     {
         SpriteBackGround = GetComponent<SpriteRenderer>();
         CPointToClick.Inst.CreatePoint();
-        //CGameEvent.current.OnLight += SwitchLight;
+        CGameEvents.OnLightSwitch.Subscribe(this.SwitchLight);
     }
 
 

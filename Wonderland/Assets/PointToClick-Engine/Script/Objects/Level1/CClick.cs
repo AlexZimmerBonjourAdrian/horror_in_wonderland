@@ -7,11 +7,11 @@ public class CClick : MonoBehaviour,Iinteract
     
     public void Oninteract()
     {
-        if(CLevelController.Inst.GetLevel() == 1)
-        {
+       // if(CLevelController.Inst.GetLevel() == 1)
+       // {
           CManagerSFX.Inst.PlaySound(0);
-          //CGameEvent.current.TriggerLight();
-        }
+          CGameEvents.OnLightSwitch.Publish(); 
+       // }
         
     }
 }

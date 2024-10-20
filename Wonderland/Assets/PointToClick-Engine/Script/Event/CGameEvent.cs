@@ -36,3 +36,34 @@ public class CGameEvent<T>
         }
     }
 }
+
+public class CGameEvent
+{
+    private readonly List<Action> listeners = new List<Action>();
+
+    public void Subscribe(Action listener)
+    {
+        if (!listeners.Contains(listener))
+            listeners.Add(listener);
+    }
+
+    public void Unsubscribe(Action listener)
+    {
+        listeners.Remove(listener);
+    }
+
+    public void Publish()
+    {
+        for (int i = listeners.Count - 1; i >= 0; i--)
+        {
+            try
+            {
+                listeners[i]?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error in event listener: {ex.Message}");
+            }
+        }
+    }
+}

@@ -66,7 +66,7 @@ public class CLevelController : MonoBehaviour
                     CDoor OBJ = FindAnyObjectByType<CDoor>();
                     CManagerSFX.Inst.PlaySound(3);
                     OBJ.SetThisLevelIsComplete(Level.GetIsComplete());
-                    OBJ.ViewDoor();
+                    CGameEvents.OnActivateDoor.Publish();
                 }
                 break;
             case 2:
