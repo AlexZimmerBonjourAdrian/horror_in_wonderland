@@ -38,11 +38,10 @@ public class CCharacter : MonoBehaviour, Iinteract
         if(OnPlayAnimatic!= null)
          OnPlayAnimatic.Raize();
 
-
       if(!CManagerDialogue.Inst.GetIsDialogueRunning())
       {
           CManagerDialogue.Inst.SetListYarn(id);
-          CManagerDialogue.Inst.StartDialogueRunner();
+          CManagerDialogue.Inst.StartDialogueRunner(0);
       }
     }
 
@@ -52,7 +51,6 @@ public class CCharacter : MonoBehaviour, Iinteract
     }
 
   // Nombres de los nodos de bark en Yarn Spinner
-
     public void PlayRandomBark()
     {
         if (barkNodes.Count == 0) return;

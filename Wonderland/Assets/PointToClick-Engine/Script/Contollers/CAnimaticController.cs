@@ -47,7 +47,7 @@ public class CAnimaticController : MonoBehaviour
            if(!CManagerDialogue.Inst.GetIsDialogueRunning())
             {
                 CManagerDialogue.Inst.SetListYarn(0);
-                CManagerDialogue.Inst.StartDialogueRunner();
+                CManagerDialogue.Inst.StartDialogueRunner(0);
             }
             
             spriteRenderer.color = new Color(spriteRenderer.color.r,spriteRenderer.color.g,spriteRenderer.color.b,1);

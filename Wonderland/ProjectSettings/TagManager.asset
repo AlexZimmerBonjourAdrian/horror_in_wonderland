@@ -7,9 +7,10 @@ TagManager:
   - IsGrounded
   - Grabbable
   - Puzzle
-  - Camera-1
-  - Camera-2
   - Interactive
+  - Mesa
+  - POV
+  - LastLine
   layers:
   - Default
   - TransparentFX

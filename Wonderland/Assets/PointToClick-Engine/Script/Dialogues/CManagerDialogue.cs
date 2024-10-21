@@ -4,6 +4,7 @@ using Yarn.Unity;
 using TMPro;
 using System.IO;
 using System.Linq;
+using System;
 
 
 namespace PointClickerEngine
@@ -15,15 +16,19 @@ public class CManagerDialogue : MonoBehaviour
     [SerializeField]
     private DialogueRunner dialogueRunner;
    
+   [SerializeField]
+    private List<string> dialogueHistory = new List<string>();
 
+    [SerializeField]
     private HashSet<string> executedDialogues = new HashSet<string>();
     
+    [SerializeField]
     public DialogueSaver dialogueSaver;
 
+    
     [SerializeField] public TextMeshProUGUI dialogueText;
 
 
-    
     public static CManagerDialogue Inst
     {
         get
@@ -34,7 +39,6 @@ public class CManagerDialogue : MonoBehaviour
                 return obj.AddComponent<CManagerDialogue>();
             }
             return _inst;
-
         }
     }
     private static CManagerDialogue _inst;
@@ -75,30 +79,48 @@ public class CManagerDialogue : MonoBehaviour
         ActualYarn = ListYarnProyect[IndexYarn];
         dialogueRunner.SetProject(ActualYarn);
     }
-   public void StartDialogueRunner()
+   public void StartDialogueRunner(int IndexYarn)
    {
-       dialogueRunner.StartDialogue(ActualYarn.NodeNames[0]);
-        
+       dialogueRunner.StartDialogue(ActualYarn.NodeNames[IndexYarn]);
    }
 
     public void StartDialogueRunner(string Dialogue)
    {    
-
-     if (executedDialogues.Add(Dialogue)) 
+     if (!dialogueHistory.Contains(Dialogue)) 
      {
+        dialogueHistory.Add(Dialogue); 
+     } 
+     else
+     {
+        if (executedDialogues.Add(Dialogue)) 
+        {
 
-       dialogueRunner.StartDialogue(Dialogue);
+        dialogueRunner.StartDialogue(Dialogue);
 
-        dialogueSaver.SaveDialogue(Dialogue);
-     }
-    else
-    {
-        Debug.LogWarning("Dialogue '" + Dialogue + "' has already been executed.");
-    }
-
+            dialogueSaver.SaveDialogue(Dialogue);
+        }
+        else
+        {
+            Debug.LogWarning("Dialogue '" + Dialogue + "' has already been executed.");
+        }
+      }
    }
-    
-   
+    public void IterateDialogueViews()
+    {
+          if (dialogueRunner == null || dialogueRunner.dialogueViews == null)
+        {
+            Debug.LogError("DialogueRunner or dialogueViews is not assigned!");
+            return;
+        }
+        var dialogueView = dialogueRunner.dialogueViews;
+        
+          var LineViews = dialogueView[0];
+          //var optionListView = dialogueView[0];
+
+           dialogueHistory.Add(LineViews.ToString()); 
+            
+
+    }
     public void StopDialogueRunner()
     {
         dialogueRunner.Stop();
@@ -108,7 +130,6 @@ public class CManagerDialogue : MonoBehaviour
     Debug.Log("FindNode " + nodeNameToFind);
     foreach (string nodeName in ActualYarn.NodeNames) 
     {
-      
         if (nodeName == nodeNameToFind)
         {
             Debug.Log("Nodo encontrado: " + nodeNameToFind);
@@ -142,7 +163,18 @@ public class CManagerDialogue : MonoBehaviour
     {
         return dialogueRunner;
     }
+
+    public List<String> getdialogueHistory()
+    {
+        return dialogueHistory;
+    }
+
+     public HashSet<string> getexecutedDialogues()
+    {
+        return executedDialogues;
+    }
 }
+    
 
 public class DialogueSaver : Yarn.Unity.VariableStorageBehaviour
 {

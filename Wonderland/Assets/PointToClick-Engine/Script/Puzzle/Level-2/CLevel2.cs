@@ -21,21 +21,12 @@ public class CLevel2 : CLevelGeneric
      [SerializeField]
     public List<GameObject> LevelRooms;
 
-   [SerializeField] public MapData Routerooms;
-
-    [SerializeField] public List<StructRoom.Room> rooms; // Lista de todas las rooms
+   // Lista de todas las rooms
 
     private int currentRoomIndex; // Índice de la room actual
-
-    // [SerializeField]
-    // private List<int> SequencePuzzle;
     
     [SerializeField]
     private List<int> CorrectSequence;
-
-   // [SerializeField]
-   // private EPuzzleType.Puzzle TypePuzzle = EPuzzleType.Puzzle.None;
-
     
     [SerializeField]
     private bool IsTakeShootgun;
@@ -56,7 +47,6 @@ public class CLevel2 : CLevelGeneric
     [SerializeField]
     private bool IsShootMusicBox;
 
-    private CDoor doorTemp;
     private int ActualRoom = 0;
 
     public static CLevel2 Inst
@@ -78,26 +68,35 @@ public class CLevel2 : CLevelGeneric
 
     public void Awake()
     {
+         _inst = this;
+          var PovObject = GameObject.FindGameObjectWithTag("POV");
+          var MesaObject =  GameObject.FindGameObjectWithTag("Mesa");
+
+         LevelRooms = GetComponentsInChildren<Room>(true) // Include inactive children
+                                  .Select(room => room.gameObject) // Select the GameObject
+                                  .ToList();
+         
+          POV = PovObject.GetComponentsInChildren<CMovementPlayer>(true) // Include inactive children
+                                  .Select(CMovementPlayer=> CMovementPlayer.gameObject) // Select the GameObject
+                                  .ToList();
+         
+          Mesa = MesaObject.GetComponentsInChildren<CMovementPlayer>(true) // Include inactive children
+                                  .Select(CMovementPlayer => CMovementPlayer.gameObject) // Select the GameObject
+                                  .ToList();
+        
      
-        LevelRooms = GetComponentsInChildren<Room>().Select(room => room.gameObject).ToList();
-       
-       // TypePuzzle = EPuzzleType.Puzzle.Sequence;
-       
-        _inst = this;
-        
-        
     }
 
 
  public void Start()
 {
-    doorTemp = FindObjectOfType<CDoor>();
-    SetRoomActive(0, true);
-    SetPovActive(0,true);
-    SetMesaActive(0,true);
+   
+    SetRoomActive(0);
+    SetMesaActive(0);
+    SetPovActive(0);
 }
 
-
+#region SetterAndGetter
 public void SetIsShootMusicBox(bool aBool)
 {
     IsShootMusicBox = aBool;
@@ -117,7 +116,7 @@ public void SetIsFinished(bool aBool)
 {
    
     IsFinished = aBool;
-    doorTemp.SetThisLevelIsComplete(aBool);
+    CGameEvents.OnCompleteLevel.Publish(true);
 }
 public void SetIsMagRevolver(bool aBool)
 {
@@ -163,7 +162,8 @@ public bool GetIsFinishLevel()
   
     return  IsFinished;
 }
-public void SetRoomActive(int roomIndex, bool isActive)
+#endregion
+public void SetRoomActive(int roomIndex, bool isActive= true)
     {
         if (roomIndex >= 0 && roomIndex < LevelRooms.Count)
         {
@@ -185,7 +185,7 @@ public void SetRoomActive(int roomIndex, bool isActive)
 
     }
 
-    public void SetPovActive(int roomIndex, bool isActive)
+    public void SetPovActive(int roomIndex, bool isActive = true)
     {
         if (roomIndex >= 0 && roomIndex < POV.Count)
         {
@@ -206,7 +206,7 @@ public void SetRoomActive(int roomIndex, bool isActive)
     }
 
     
-        public void SetMesaActive(int roomIndex, bool isActive)
+        public void SetMesaActive(int roomIndex, bool isActive = true)
     {
         if (roomIndex >= 0 && roomIndex < Mesa.Count)
         {
@@ -227,67 +227,10 @@ public void SetRoomActive(int roomIndex, bool isActive)
     }
 
 
-public void LoadRoom(int index)
-    {
-        // Validar el índice
-        foreach (StructRoom.Room R in rooms)
-        {
-            if (R.id == index)
-            {
-                if (R.IsAccessible)
-                {
-                    Debug.LogWarning("La room " + index + "Es");
-                    currentRoomIndex = index;
-                    //_SprtR.sprite = R.RoomImage;                   
-
-                break;
-            }
-            else
-            {
-                Debug.LogWarning("La room " + index + " no es accesible.");
-                break;
-            }
-        }
-    }
-}
-
-
-
-
-    public void LoadRoomByTag(string roomTag)
-    {
-        // Iterate through all rooms and update IsAccessible based on the tag
-        foreach (var R in rooms)
-        {
-            if (R.tag == roomTag)
-            {
-                R.SetIsAccessible(true);
-                Debug.LogWarning("La room " + R.id + " con tag " + roomTag + " es accesible.");
-            }
-            else
-            {   
-             
-                R.SetIsAccessible(false);
-                Debug.LogWarning("La room " + R.id + " con tag " + roomTag + " no es accesible.");
-            }
-        }
-        
-    }
-
      public int GetCurrentRoomIndex()
      {
          return currentRoomIndex;
      }
-
-     public MapData GetRouterooms()
-     {
-        return Routerooms;
-     }
-
-    public void SetRouterooms(MapData Data)
-    {
-        Routerooms = Data;
-    }
 
     public void Update()
     {

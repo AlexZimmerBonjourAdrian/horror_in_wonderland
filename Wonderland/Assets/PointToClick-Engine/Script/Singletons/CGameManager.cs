@@ -4,6 +4,8 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UIElements;
 using PointClickerEngine;
+using TMPro;
+using UnityEngine.UI;
 public class CGameManager : MonoBehaviour
 {
     // Referencias a otros managers
@@ -45,6 +47,9 @@ public class CGameManager : MonoBehaviour
 
     private GameState currentState;
    
+    [SerializeField]
+    public TextMeshProUGUI SaveDataUI;
+
     private Dictionary<GameState, CGameState> states; 
    
     //    states = new Dictionary<GameState, CGameState>()
@@ -81,7 +86,8 @@ public class CGameManager : MonoBehaviour
             cameraLerpCoroutine = StartCoroutine(LerpCameraToPuzzle(puzzleTransform));
         }
         // Iniciar la corrutina de movimiento
-       
+      
+
     }
 
     // Singleton
@@ -115,10 +121,11 @@ public class CGameManager : MonoBehaviour
 
 
 
-    private void Start()
+    void Start()
     // Métodos para inicializar y finalizar el juego 
     {
-      
+        SaveDataUI = GameObject.Find("SaveFlag").GetComponent<TextMeshProUGUI>();
+        SaveDataUI.text = "Ready!"; 
         PlayerGameobject = GameObject.FindGameObjectWithTag("Player");
          CMICILSPSystem.Instance.ApplyTemplate(CMICILSPSystem.Instance.Detective); 
         originalCameraPosition = Camera.main.transform.position;
@@ -138,6 +145,9 @@ public class CGameManager : MonoBehaviour
         //                 { GameState.PuzzleState, new CPuzzleState(this) },      
         // }; 
         originalCameraRotation = Camera.main.transform.rotation;
+       
+
+        
         
     }
 

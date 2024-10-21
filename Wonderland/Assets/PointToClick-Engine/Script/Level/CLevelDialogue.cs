@@ -31,7 +31,7 @@ public class CLevelDialogue : CLevelGeneric
       {
         
           CManagerDialogue.Inst.SetListYarn(1);
-          CManagerDialogue.Inst.StartDialogueRunner();
+          CManagerDialogue.Inst.StartDialogueRunner(0);
       }
 
       

@@ -15,7 +15,7 @@ public class CDoor : MonoBehaviour, Iinteract
     {
         CPointToClick.Inst.CreatePoint(); 
         CGameEvents.OnActivateDoor.Subscribe(this.ViewDoor);
-        
+        CGameEvents.OnCompleteLevel.Subscribe(SetThisLevelIsComplete);
         
     }
     void Start()
