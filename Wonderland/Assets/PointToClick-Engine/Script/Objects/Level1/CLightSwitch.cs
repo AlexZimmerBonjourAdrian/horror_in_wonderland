@@ -12,12 +12,14 @@ public class CLightSwitch : CGenericObject
     public SpriteRenderer SpriteBackGround;
     public Sprite[] SpriteLight;
 
-
+    private int pressed = 0;
     public void Awake()
     {
         SpriteBackGround = GetComponent<SpriteRenderer>();
         CPointToClick.Inst.CreatePoint();
         CGameEvents.OnLightSwitch.Subscribe(this.SwitchLight);
+        CGameEvents.OnCounLightSwitch.Subscribe(this.CoutPressed);
+       
     }
 
 
@@ -64,6 +66,17 @@ public class CLightSwitch : CGenericObject
         IsActive = false;
     }
 
-
-
+    private void CoutPressed()
+    {
+        pressed +=1; 
+        if(pressed >= 10)
+        {
+          
+            Debug.Log(pressed);
+              CompleteLight();
+            CGameEvents.OnCompleteLevel.Publish(true);
+            CGameEvents.OnActivateDoor.Publish();
+            CLevelController.Inst.checkCompleteLevel();
+        }
+    }
 }

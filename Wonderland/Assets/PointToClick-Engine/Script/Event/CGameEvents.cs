@@ -64,7 +64,7 @@ public static class CGameEvents
 
 //OnLightSwitch Event Speficic
     public static readonly CGameEvent OnLightSwitch = new CGameEvent();
-
+    public static readonly CGameEvent OnCounLightSwitch = new CGameEvent();
      public static readonly CGameEvent OnNotificationSaveData = new CGameEvent();
 //Examples to integrate public static readonly CGameEvent<bool>
 

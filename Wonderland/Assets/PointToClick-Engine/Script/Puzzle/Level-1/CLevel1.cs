@@ -113,6 +113,7 @@ public class CLevel1 : CLevelGeneric
             isComplete = true;
             Debug.Log("El nivel esta completado");
             CLevelController.Inst.checkCompleteLevel();
+          
         }
     }
 
